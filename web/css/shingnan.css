@@ -1,0 +1,177 @@
+body {
+    display: flex;
+    min-height: 150vh;
+    flex-direction: column;
+}
+
+footer {
+    width: 100%;
+}
+.content {
+    flex: 1;
+    margin-top: 115px;
+}
+.text-black {
+    color: black;
+}
+
+/* 背景顏色 */
+.bg-gray {
+    background-color: #5a5a5a;
+}
+
+.bg-light2 {
+    background-color: #eeeeee;
+}
+
+.bg-darkpink {
+    background-color: #d3bbc5;
+}
+/* 導覽列固定上方 */
+.fixed-top2 {
+    margin-top: 61px;
+}
+/* 導覽列文字往下滑動 */
+.nav-link-text {
+    height: 37px;
+    overflow: hidden;
+}
+.nav-link-text span {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+.nav-link-text, .nav-span {
+    transition: 0.3s;
+}
+.nav-span {
+    margin-top: -30px;
+    line-height: 28px;
+}
+.nav-link-text:hover .nav-span {
+    margin-top: 0px;
+}
+
+/* 回到最上面按鈕 */
+#go-top-btn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20%; /* Place the button at the bottom of the page */
+    right: 2%; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background: rgba(0, 0, 0, 0.6);
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+}
+
+#go-top-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+/* 圖片畫廊 */
+.row-cus {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: flex-start;
+    width: 80%;
+}
+
+/* 1 row = 5 cols */
+.column {
+    -ms-flex: 20%; /* IE10 */
+    flex: 20%;
+    max-width: 20%;
+    padding: 0 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+.column img {
+    opacity: 1;
+    vertical-align: middle;
+    width: 100%;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.gallery-overlay {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.gallery-text {
+    color: blue;
+    font-size: 18px;
+}
+
+.column:hover img {
+    opacity: 0.6;
+}
+
+.column:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* 眼鏡選購類別 */
+.buy-class {
+    width: 30%;
+    background-color: #dddddd;
+    height: 40px;
+    text-align: right;
+    font-size: 20px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+.more {
+    text-align: right;
+}
+
+
+/* 1 row = 4 cols */
+@media (max-width: 1000px) {
+    .column {
+        -ms-flex: 25%;
+        flex: 25%;
+        max-width: 25%;
+    }
+}
+
+/* 1 row = 2 cols */
+@media (max-width: 800px) {
+    .column {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+
+    .gallery-text {
+        font-size: 22px;
+    }
+}
+
+/* 1 row = 1 col */
+@media (max-width: 480px) {
+    .column {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+    }
+    .gallery-text {
+        font-size: 24px;
+    }
+}
