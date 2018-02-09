@@ -43,8 +43,8 @@
                 <button type="button" class="btn btn-secondary border-dark">more</button>
             </div>
         </div>
-        \{foreach from=$frames key=style item=frame\}
-        <div class="buy-class">\{$style\}</div>
+        \{foreach from=$styles item=style\}
+        <div class="buy-class">\{$style.styleName\}</div>
         <div class="row mx-auto mb-3" style="width: 70%;">
             \{foreach from=$frame item=img name=frameImg\}
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">

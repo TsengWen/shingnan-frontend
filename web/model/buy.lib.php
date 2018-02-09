@@ -16,7 +16,8 @@ class Buy
     /**
      * Statistic constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         session_start();
         // instantiate the pdo object
         $this->db = dbSetup::getDbConn();
@@ -35,40 +36,40 @@ class Buy
     /**
      * 顯示眼鏡第一頁
      */
-    public function view() {
+    public function view()
+    {
         if ($_SESSION['isLogin'] == true) {
             // member login
         } else {
-            $sql = "SELECT `image`.`path` FROM `brand`
-                    INNER JOIN `image`
-                    ON `brand`.`isDelete` = 0
-                    AND `brand`.`brandId` = `image`.`itemId`
+
+            $sql = "SELECT * FROM `brand`
+                    WHERE `isDelete` = 0
                     ORDER BY `lastUpdateTime`
                     DESC LIMIT 0, 8";
-            $brands = $this->getSQLResult($sql);
-            $this->smarty->assign('brands', $brands);
+            $res = $this->db->prepare($sql);
 
-            $sql = "SELECT `im`.`path`, `tmp`.`styleName`
-                    FROM `image` AS `im` INNER JOIN 
-                    (SELECT `fs`.`frameId`, `s`.`styleName`,`s`.`lastUpdateTime`
-                    FROM `style` AS `s` LEFT JOIN `frameStyle` AS `fs`
-                    ON `s`.`isDelete` = 0 
-                    AND `s`.`styleId` = `fs`.`styleId`) AS `tmp`
-                    ON `im`.`itemId` = `tmp`.`frameId`
-                    ORDER BY `tmp`.`lastUpdateTime` DESC";
-            $frameStyles = $this->getSQLResult($sql);
-            $frames = array();
-            if(isset($frameStyles)) {
-                $key = '';
-                foreach($frameStyles as $item) {
-                    if ($key != $item['styleName']){
-                        $key = $item['styleName'];
-                        $frames[$key] = array();
-                    }
-                    array_push($frames[$key], 'http://192.168.65.3/shingnan/web/controller/' . $item['path']);
-                }
+            if ($res->execute()) {
+                $brands = $res->fetchAll();
+
+                $this->setResultMsg();
+                $this->smarty->assign('brands', $brands);
+            } else {
+                $error = $res->errorInfo();
+                $this->setResultMsg('failure', $error[0]);
             }
-            $this->smarty->assign('frames', $frames);
+
+            $sql = "SELECT * FROM `style` WHERE `isDelete` = 0";
+            $res = $this->db->prepare($sql);
+
+            if ($res->execute()) {
+                $styles = $res->fetchAll();
+
+                $this->setResultMsg();
+                $this->smarty->assign('styles', $styles);
+            } else {
+                $error = $res->errorInfo();
+                $this->setResultMsg('failure', $error[0]);
+            }
 
             $this->smarty->assign('title', '眼鏡選購');
             $this->smarty->display('buy.html');
@@ -78,11 +79,11 @@ class Buy
     /**
      * 顯示眼鏡詳細資料
      */
-    public function viewDetail() {
+    public function viewDetail()
+    {
         if ($_SESSION['isLogin'] == true) {
             // member login
         } else {
-            
 
             $this->smarty->assign('title', '眼鏡選購');
             $this->smarty->display('buy_detail.html');
@@ -92,7 +93,8 @@ class Buy
     /**
      * SQL query
      */
-    public function getSQLResult($sql='') {
+    public function getSQLResult($sql = '')
+    {
         // check $sql if is empty string
         if (empty($sql)) {
             return null;
@@ -102,7 +104,7 @@ class Buy
             if ($res->execute()) {
                 $data = $res->fetchAll();
                 $this->setResultMsg();
-                
+
                 return $data;
             } else {
                 $error = $res->errorInfo();
@@ -116,7 +118,8 @@ class Buy
     /**
      * 設定訊息
      */
-    public function setResultMsg($resultMsg='success', $errorMsg='') {
+    public function setResultMsg($resultMsg = 'success', $errorMsg = '')
+    {
         $this->msg = $resultMsg;
         $this->error = $errorMsg;
         $this->smarty->assign('error', $this->error);
