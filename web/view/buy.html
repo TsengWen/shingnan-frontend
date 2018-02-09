@@ -43,7 +43,8 @@
                 <a class="btn btn-warning" href="#">...more</a>
             </div>
         </div>
-        <div class="buy-class">經典復古</div>
+        \{foreach from=$styles item=style\}
+        <div class="buy-class">\{$style.styleName\}</div>
         <div class="row mx-auto mb-3" style="width: 70%;">
             <div class="col" style="padding: 5px;">
                 <img class="rounded" src="../img/01.jpg" style="width: 100%;">
@@ -75,6 +76,7 @@
                 <a class="btn btn-warning" href="javascript:">...more</a>
             </div>
         </div>
+        \{/foreach\}
         <!-- got top button -->
         <button id="go-top-btn">TOP</button>
     </div>

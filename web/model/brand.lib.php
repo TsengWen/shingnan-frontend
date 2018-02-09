@@ -3,9 +3,9 @@
 require_once HOME_DIR . 'configs/config.php';
 
 /**
- * 眼鏡選購
+ * 品牌介紹
  */
-class Buy
+class Brand
 {
     public $db = null;
     public $smarty = null;
@@ -39,37 +39,24 @@ class Buy
         if ($_SESSION['isLogin'] == true) {
             // member login
         } else {
-            $sql = "SELECT * FROM `brand` 
-                    WHERE `isDelete` = 0 
-                    ORDER BY `lastUpdateTime`
-                    DESC LIMIT 0, 8";
-            $res = $this->db->prepare($sql);
+            // $sql = "SELECT * FROM `image` WHERE `itemId` like 'index_%'";
+            // $res = $this->db->prepare($sql);
             
-            if ($res->execute()) {
-                $brands = $res->fetchAll();
-
-                $this->setResultMsg();
-                $this->smarty->assign('brands', $brands);             
-            } else {
-                $error = $res->errorInfo();
-                $this->setResultMsg('failure', $error[0]);
-            }
-
-            $sql = "SELECT * FROM `style` WHERE `isDelete` = 0";
-            $res = $this->db->prepare($sql);
-
-            if ($res->execute()) {
-                $styles = $res->fetchAll();
-
-                $this->setResultMsg();
-                $this->smarty->assign('styles', $styles);             
-            } else {
-                $error = $res->errorInfo();
-                $this->setResultMsg('failure', $error[0]);
-            }
-
-            $this->smarty->assign('title', '眼鏡選購');
-            $this->smarty->display('buy.html');
+            // if ($res->execute()) {
+            //     $rows = $res->fetchAll();
+            //     $images = array();
+            //     foreach($rows as $img) {
+            //         $images[$img['imageName']] = 'http://192.168.65.3/shingnan/web/controller/' . $img['path'];
+            //     }
+            //     $this->setResultMsg();
+            //     $this->smarty->assign('images', $images);             
+            // } else {
+            //     $error = $res->errorInfo();
+            //     $this->setResultMsg('failure', $error[0]);
+            // }
+            
+            $this->smarty->assign('title', '品牌介紹');
+            $this->smarty->display('brand.html');
         }
     }
 

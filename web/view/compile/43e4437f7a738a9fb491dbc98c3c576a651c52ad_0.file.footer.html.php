@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2018-02-06 17:09:35
+/* Smarty version 3.1.28, created on 2018-02-09 15:35:00
   from "C:\xampp\htdocs\shingnan-frontend\web\view\common\footer.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5a79d33f6c4279_68059448',
+  'unifunc' => 'content_5a7db194532bf7_89373165',
   'file_dependency' => 
   array (
     '43e4437f7a738a9fb491dbc98c3c576a651c52ad' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a79d33f6c4279_68059448 ($_smarty_tpl) {
+function content_5a7db194532bf7_89373165 ($_smarty_tpl) {
 ?>
 <!-- footer -->
 <footer class="bg-gray p-3">

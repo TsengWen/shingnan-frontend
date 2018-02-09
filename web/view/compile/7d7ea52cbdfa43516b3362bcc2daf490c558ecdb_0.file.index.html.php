@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2018-02-06 17:09:35
+/* Smarty version 3.1.28, created on 2018-02-09 15:35:00
   from "C:\xampp\htdocs\shingnan-frontend\web\view\index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5a79d33f65eb88_72282369',
+  'unifunc' => 'content_5a7db1944e5807_05722262',
   'file_dependency' => 
   array (
     '7d7ea52cbdfa43516b3362bcc2daf490c558ecdb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\shingnan-frontend\\web\\view\\index.html',
-      1 => 1517933313,
+      1 => 1518183371,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:common/footer.html' => 1,
   ),
 ),false)) {
-function content_5a79d33f65eb88_72282369 ($_smarty_tpl) {
+function content_5a7db1944e5807_05722262 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,7 +71,7 @@ function content_5a79d33f65eb88_72282369 ($_smarty_tpl) {
         <div class="navbar-nav">
           <a class="nav-item nav-link mx-5" href="javascript:" style="color: black;">ABOUT US</a>
           <a class="nav-item nav-link mx-5" href="javascript:" style="color: black;">WHAT'S NEWS</a>
-          <a class="nav-item nav-link mx-5" href="javascript:" style="color: black;">BRAND</a>
+          <a class="nav-item nav-link mx-5" href="brandController.php?action=view" style="color: black;">BRAND</a>
           <a class="nav-item nav-link mx-5" href="buyController.php?action=view" style="color: black;">BUY</a>
           <a class="nav-item nav-link mx-5" href="javascript:" style="color: black;">EDUCATION</a>
         </div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2018-02-06 17:09:35
+/* Smarty version 3.1.28, created on 2018-02-09 15:35:00
   from "C:\xampp\htdocs\shingnan-frontend\web\view\common\navigationbar.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5a79d33f6ad136_44064294',
+  'unifunc' => 'content_5a7db19451ce53_46986501',
   'file_dependency' => 
   array (
     'f4db1cf89ad89b3743434f4ea6f4b94634568f5c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\shingnan-frontend\\web\\view\\common\\navigationbar.html',
-      1 => 1517933034,
+      1 => 1518183360,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a79d33f6ad136_44064294 ($_smarty_tpl) {
+function content_5a7db19451ce53_46986501 ($_smarty_tpl) {
 ?>
 <!-- brand navbar -->
 <nav class="navbar navbar-light bg-gray fixed-top">
@@ -48,7 +48,7 @@ function content_5a79d33f6ad136_44064294 ($_smarty_tpl) {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-link-text" href="javascript:">
+                <a class="nav-link nav-link-text" href="brandController.php?action=view">
                     <span class="nav-span">BRAND</span>
                     <span>品牌介紹</span>
                 </a>

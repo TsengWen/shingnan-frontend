@@ -1,14 +1,44 @@
+<?php
+/* Smarty version 3.1.28, created on 2018-02-09 15:34:13
+  from "C:\xampp\htdocs\shingnan-frontend\web\view\brand.html" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.28',
+  'unifunc' => 'content_5a7db1654fcfa3_87586013',
+  'file_dependency' => 
+  array (
+    '529c24512fd51c0dd1ba5b5cdce0399156147b8d' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\shingnan-frontend\\web\\view\\brand.html',
+      1 => 1518185460,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:common/resource.html' => 1,
+    'file:common/navigationbar.html' => 1,
+    'file:common/footer.html' => 1,
+  ),
+),false)) {
+function content_5a7db1654fcfa3_87586013 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    \{include file="common/resource.html"\}
+    <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:common/resource.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </head>
 
 <body>
     <div class="container-fluid content p-0">
         <!-- navigationbar -->
-        \{include file="common/navigationbar.html"\}
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:common/navigationbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
         <!-- main-content -->
         <img class="img-fluid p-5" src="../img/cover.png" alt="Big img">
         <!-- brand logo -->
@@ -119,7 +149,10 @@
         <button id="go-top-btn">TOP</button>
     </div>
     <!-- footer -->
-    \{include file="common/footer.html"\}
+    <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:common/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 </body>
 
-</html>
+</html><?php }
+}
