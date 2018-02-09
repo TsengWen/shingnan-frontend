@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2018-02-09 15:35:00
+/* Smarty version 3.1.28, created on 2018-02-09 15:43:18
   from "C:\xampp\htdocs\shingnan-frontend\web\view\index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5a7db1944e5807_05722262',
+  'unifunc' => 'content_5a7db38612b229_41745493',
   'file_dependency' => 
   array (
     '7d7ea52cbdfa43516b3362bcc2daf490c558ecdb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\shingnan-frontend\\web\\view\\index.html',
-      1 => 1518183371,
+      1 => 1518187392,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:common/footer.html' => 1,
   ),
 ),false)) {
-function content_5a7db1944e5807_05722262 ($_smarty_tpl) {
+function content_5a7db38612b229_41745493 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -89,7 +89,9 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 echo $_smarty_tpl->tpl_vars['images']->value[('index_img_').($_smarty_tpl->tpl_vars['i']->value)];
 } else { ?>../img/01.jpg<?php }?>" style="width: 100%;">
         <div class="gallery-overlay">
-          <p class="gallery-text">Welcome to the Jungle!</p>
+          <p class="gallery-text"><?php if (isset($_smarty_tpl->tpl_vars['images']->value[('index_img_').($_smarty_tpl->tpl_vars['i']->value)]) && $_smarty_tpl->tpl_vars['images']->value[('index_img_').($_smarty_tpl->tpl_vars['i']->value)]['link'] != '') {
+echo $_smarty_tpl->tpl_vars['images']->value[('index_img_').($_smarty_tpl->tpl_vars['i']->value)]['link'];
+} else { ?>尚無描述<?php }?></p>
         </div>
       </div>
       <?php }

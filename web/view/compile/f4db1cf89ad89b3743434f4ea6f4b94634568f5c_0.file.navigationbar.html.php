@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.28, created on 2018-02-09 15:35:00
+/* Smarty version 3.1.28, created on 2018-02-09 15:43:18
   from "C:\xampp\htdocs\shingnan-frontend\web\view\common\navigationbar.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_5a7db19451ce53_46986501',
+  'unifunc' => 'content_5a7db38617eca7_48198819',
   'file_dependency' => 
   array (
     'f4db1cf89ad89b3743434f4ea6f4b94634568f5c' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5a7db19451ce53_46986501 ($_smarty_tpl) {
+function content_5a7db38617eca7_48198819 ($_smarty_tpl) {
 ?>
 <!-- brand navbar -->
 <nav class="navbar navbar-light bg-gray fixed-top">

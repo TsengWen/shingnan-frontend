@@ -50,7 +50,7 @@
       <div class="column">
         <img src="\{if $images[index_img_|cat:$i]\}\{$images[index_img_|cat:$i]\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
         <div class="gallery-overlay">
-          <p class="gallery-text">Welcome to the Jungle!</p>
+          <p class="gallery-text">\{if isset($images[index_img_|cat:$i]) and $images[index_img_|cat:$i].link neq ''\}\{$images[index_img_|cat:$i].link\}\{else\}尚無描述\{/if\}</p>
         </div>
       </div>
       \{/for\}
