@@ -27,12 +27,6 @@ footer {
 .bg-darkpink {
     background-color: #d3bbc5;
 }
-
-/* 邊框顏色 */
-.border-dark {
-    border-color: #343a40;
-}
-
 /* 導覽列固定上方 */
 .fixed-top2 {
     margin-top: 61px;
@@ -181,3 +175,46 @@ footer {
         font-size: 24px;
     }
 }
+
+/*  關於我們 */
+.about {
+    width: 1000px;
+    list-style: none;
+    margin: 0;
+    padding: 30px 30px 0 0;
+}
+
+.about li {
+    height: 144px;
+    margin-bottom: 100px;
+}
+
+.about li span.left {
+    float: left;
+    display: inline-block;
+    margin-right: 20px;
+    padding-bottom: 4px;
+ *padding-bottom: 9px;/** Needed for IE7 **/
+}
+.about li span.right {
+    float: right;
+    display: inline-block;
+    margin-left: 20px;
+    padding-bottom: 4px;
+ *padding-bottom: 9px;/** Needed for IE7 **/
+}
+
+.about li img {
+    background-color: #fff;
+    padding: 3px;
+}
+
+.about li p {
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: justify;
+    
+}
+
