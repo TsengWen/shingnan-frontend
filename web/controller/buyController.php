@@ -23,6 +23,9 @@ switch ($method) {
     case 'GET':
         $action = isset($_GET['action']) ? $_GET['action'] : 'view';
         switch ($action) {
+            case 'viewDetail':
+                $buy->viewDetail();
+                break;
             case 'view':
             default:
                 $buy->view();

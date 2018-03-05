@@ -33,7 +33,7 @@ class Buy
     }
 
     /**
-     * 顯示首頁
+     * 顯示眼鏡第一頁
      */
     public function view() {
         if ($_SESSION['isLogin'] == true) {
@@ -72,6 +72,20 @@ class Buy
 
             $this->smarty->assign('title', '眼鏡選購');
             $this->smarty->display('buy.html');
+        }
+    }
+
+    /**
+     * 顯示眼鏡詳細資料
+     */
+    public function viewDetail() {
+        if ($_SESSION['isLogin'] == true) {
+            // member login
+        } else {
+            
+
+            $this->smarty->assign('title', '眼鏡選購');
+            $this->smarty->display('buy_detail.html');
         }
     }
 

@@ -48,7 +48,7 @@
         <div class="row mx-auto mb-3" style="width: 70%;">
             \{foreach from=$frame item=img name=frameImg\}
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{$img\}" onError="this.src = '../img/01.jpg'" style="width: 100%;">
+                <img class="rounded" src="\{if isset($img)\}\{$img\}\{else\}../img/01.jpg\{/if\}" onError="this.src = '../img/01.jpg'" style="width: 100%;">
             </div>
             \{if $img@index eq 7\} \{break\} \{/if\} \{/foreach\} \{if count($frame) > 8\}
             <div class="col text-right p-1">
