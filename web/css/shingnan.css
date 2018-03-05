@@ -27,6 +27,12 @@ footer {
 .bg-darkpink {
     background-color: #d3bbc5;
 }
+
+/* 邊框顏色 */
+.border-dark {
+    border-color: #343a40;
+}
+
 /* 導覽列固定上方 */
 .fixed-top2 {
     margin-top: 61px;
