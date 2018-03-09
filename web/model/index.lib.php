@@ -16,7 +16,8 @@ class Index
     /**
      * Statistic constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         session_start();
         // instantiate the pdo object
         $this->db = dbSetup::getDbConn();
@@ -35,26 +36,27 @@ class Index
     /**
      * 顯示首頁
      */
-    public function view() {
+    public function view()
+    {
         if ($_SESSION['isLogin'] == true) {
             // member login
         } else {
             $sql = "SELECT * FROM `image` WHERE `itemId` like 'index_%'";
             $res = $this->db->prepare($sql);
-            
+
             if ($res->execute()) {
                 $rows = $res->fetchAll();
                 $images = array();
-                foreach($rows as $img) {
-                    $images[$img['imageName']] = 'http://192.168.65.3/shingnan/web/controller/' . $img['path'];
+                foreach ($rows as $img) {
+                    $images[$img['imageName']] = 'http://140.116.82.48/shingnan/web/controller/' . $img['path'];
                 }
                 $this->setResultMsg();
-                $this->smarty->assign('images', $images);             
+                $this->smarty->assign('images', $images);
             } else {
                 $error = $res->errorInfo();
                 $this->setResultMsg('failure', $error[0]);
             }
-            
+
             $this->smarty->assign('title', '興南眼鏡行');
             $this->smarty->display('index.html');
         }
@@ -63,7 +65,8 @@ class Index
     /**
      * 設定訊息
      */
-    public function setResultMsg($resultMsg = 'success', $errorMsg = '') {
+    public function setResultMsg($resultMsg = 'success', $errorMsg = '')
+    {
         $this->msg = $resultMsg;
         $this->error = $errorMsg;
         $this->smarty->assign('error', $this->error);

@@ -38,6 +38,16 @@ class News
      */
     public function view()
     {
+        $sql = 'SELECT `article`.`title`, `article`.`articleId` , `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`
+                , `article`.`createTime`
+                FROM  `article`
+                WHERE type = 1
+                ORDER BY `article`.`articleId`';
+        $res = $this->db->prepare($sql);
+        $res->execute();
+        $allnewsData = $res->fetchAll();
+
+        $this->smarty->assign('allnewsData', $allnewsData);
         $this->setResultMsg();
         $this->smarty->assign('title', '最新消息');
         $this->smarty->display('news.html');
