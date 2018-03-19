@@ -12,22 +12,50 @@
         <!-- main-content -->
         <img class="img-fluid p-5" src="../img/cover.png" alt="Big img">
         <div class="row mx-auto" style="width: 90%;">
-            <div class="sidebar col-md-4 mh-100 bg-darkpink mb-5">
-                選品牌
-            </div>
-            <div class="col-md-8">
-                <div class="text-center bg-darkpink">品牌名稱</div>
-                <div class="row my-5">
-                    <div class="col mx-100">
-                        <img class="img-fluid" src="../img/03.jpg">
-                    </div>
-                    <div class="col mx-100">
-                        <img class="img-fluid" src="../img/03.jpg">
-                    </div>
-                    <div class="col mx-100">
-                        <img class="img-fluid" src="../img/03.jpg">
+            <div class="col-3 mh-100 bg-light2 mb-5 text-center py-5">
+                <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    選品牌
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">型男風格</a>
+                        <a href="#" class="list-group-item list-group-item-action">金士曼風格</a>
+                        <a href="#" class="list-group-item list-group-item-action">少女風格</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled">古典風格</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled">文青風格</a>
                     </div>
                 </div>
+                <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample2"
+                    aria-expanded="false" aria-controls="collapseExample2">
+                    型男風格
+                </button>
+                <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample3"
+                    aria-expanded="false" aria-controls="collapseExample3">
+                    金士曼風格
+                </button>
+                <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample4"
+                    aria-expanded="false" aria-controls="collapseExample4">
+                    少女風格
+                </button>
+                <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample5"
+                    aria-expanded="false" aria-controls="collapseExample5">
+                    古典風格
+                </button>
+            </div>
+            <div class="col-9">
+                <div class="text-center bg-darkpink p-3">品牌名稱</div>
+                <div class="row p-3">
+                    \{for $i=1 to 9\}
+                    <div class="w-100 col-md-4 col-sm-6 col-sm-12 p-0 border border-bold-black text-center">
+                        <!-- glasses image -->
+                        <img class="img-fluid" style="height: 145px;" src="../img/03.jpg">
+                        <!-- glasses text -->
+                        <p style="height: 167px;">眼鏡文字描述</p>
+                    </div>
+                    \{/for\}
+                </div>
+
             </div>
         </div>
         <!-- got top button -->
