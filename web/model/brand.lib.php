@@ -39,24 +39,21 @@ class Brand
         if ($_SESSION['isLogin'] == true) {
             // member login
         } else {
-            // $sql = "SELECT * FROM `image` WHERE `itemId` like 'index_%'";
-            // $res = $this->db->prepare($sql);
-            
-            // if ($res->execute()) {
-            //     $rows = $res->fetchAll();
-            //     $images = array();
-            //     foreach($rows as $img) {
-            //         $images[$img['imageName']] = 'http://192.168.65.3/shingnan/web/controller/' . $img['path'];
-            //     }
-            //     $this->setResultMsg();
-            //     $this->smarty->assign('images', $images);             
-            // } else {
-            //     $error = $res->errorInfo();
-            //     $this->setResultMsg('failure', $error[0]);
-            // }
             
             $this->smarty->assign('title', '品牌介紹');
             $this->smarty->display('brand.html');
+        }
+    }
+
+    /**
+     * 顯示品牌詳細資料
+     */
+    public function viewDetail() {
+        if ($_SESSION['isLogin'] == true) {
+            // member login
+        } else {
+            $this->smarty->assign('title', '品牌介紹');
+            $this->smarty->display('brand_detail.html');
         }
     }
 

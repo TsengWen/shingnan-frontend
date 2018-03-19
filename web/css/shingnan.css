@@ -1,13 +1,7 @@
 body {
-    line-height: 23px;
     display: flex;
-    color: #555555;
     min-height: 150vh;
     flex-direction: column;
-    background: #f7f7f7;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 footer {
@@ -31,8 +25,14 @@ footer {
 }
 
 .bg-darkpink {
-    background-color: #d3bbc5;
+    background-color: #ddd3bc;
 }
+
+/* 邊框顏色 */
+.border-dark {
+    border-color: #343a40;
+}
+
 /* 導覽列固定上方 */
 .fixed-top2 {
     margin-top: 61px;
@@ -181,7 +181,6 @@ footer {
         font-size: 24px;
     }
 }
-
 /*  關於我們 */
 .about {
     width: 1050px;
