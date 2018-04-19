@@ -5,7 +5,7 @@ require_once HOME_DIR . 'configs/config.php';
 /**
  * 聯絡我們
  */
-class Member
+class User
 {
     public $db = null;
     public $smarty = null;
@@ -44,7 +44,7 @@ class Member
             $this->viewLogin();
             return ;
         }
-        $this->smarty->display('member.html');
+        $this->smarty->display('user/userDashboard.html');
     }
 
     public function forgetPassowrd()
@@ -55,15 +55,28 @@ class Member
     /**
      * 會員資料修改頁面
      */
-    public function memberDetailView()
+    public function userDetailView()
     {
         if(!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
             return ;
         }
-        
+        $userId = $input['userId'];
+        $sql = "SELECT `user`.`userId`, `user`.`userName`,
+                       `user`.`account`, `user`.`phone`, 
+                       `user`.`address`, `user`.`email`
+                FROM  `user`
+                WHERE  `user`.`userId` = :userId AND `user`.`isDelete` = 0";
+
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':userId', $userId, PDO::PARAM_STR);
+        $res->execute();
+        $userDetailData = $res->fetch();
+
+
+        $this->smarty->assign('userDetailData', $userDetailData);
         $this->smarty->assign('userId', $_SESSION['userId']);
-        $this->smarty->display('memberDetail.html');
+        $this->smarty->display('user/userDetail.html');
     }
 
     public function orderRecordView() 
@@ -72,7 +85,7 @@ class Member
             $this->viewLogin();
             return ;
         }
-        $this->smarty->display('orderRecord.html');
+        $this->smarty->display('user/orderRecord.html');
     }
 
     public function pointRecordView()
@@ -81,7 +94,7 @@ class Member
             $this->viewLogin();
             return ;
         }
-        $this->smarty->display('pointRecord.html');
+        $this->smarty->display('user/pointRecord.html');
     }
 
     public function couponView()
@@ -90,7 +103,7 @@ class Member
             $this->viewLogin();
             return ;
         }
-        $this->smarty->display('coupon.html');
+        $this->smarty->display('user/coupon.html');
         
     }
 
@@ -100,7 +113,7 @@ class Member
             $this->viewLogin();
             return ;
         }
-        $this->smarty->display('info.html');
+        $this->smarty->display('user/info.html');
         
     }
 
@@ -110,7 +123,7 @@ class Member
             $this->viewLogin();
             return ;
         }
-        $this->smarty->display('cart.html');
+        $this->smarty->display('user/cart.html');
     }
     /**
      * 設定訊息

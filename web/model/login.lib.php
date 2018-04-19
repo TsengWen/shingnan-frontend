@@ -76,7 +76,7 @@ class Login
                 $_SESSION['userId']  = $result['userId'];
                 $_SESSION['account'] = $input['account'];
                 $this->error = ''; // clear the error message
-                header("Location:../controller/memberController.php?action=view");
+                header("Location:../controller/userController.php?action=view");
 
             } else {
                 $this->error = '密碼輸入錯誤';
