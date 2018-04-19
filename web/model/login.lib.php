@@ -75,12 +75,8 @@ class Login
                 $_SESSION['isLogin'] = true;
                 $_SESSION['userId']  = $result['userId'];
                 $_SESSION['account'] = $input['account'];
-
-                // clear the error message
-                $this->error = '';
-
-                // TODO: go to member page (header location)
-                echo("hello world");
+                $this->error = ''; // clear the error message
+                header("Location:../controller/memberController.php?action=view");
 
             } else {
                 $this->error = '密碼輸入錯誤';
@@ -89,6 +85,7 @@ class Login
 
         } catch (Exception $e) {
             print 'Exception : ' . $e->getMessage();
+
         }
 
     }

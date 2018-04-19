@@ -6,7 +6,7 @@
 </head>
 
 <style>
-@import "bourbon";
+
 
 body {
 	background: #eee !important;	
@@ -23,7 +23,7 @@ body {
   margin: 0 auto;
   background-color:transparent;
 
-  .form-signin-heading,
+  .form-signin-heading, 
 	.checkbox {
 	  margin-bottom: 30px;
 	}
@@ -87,9 +87,12 @@ window.setTimeout(function() {
 							<input type="text" class="form-control mb-3" name="account" placeholder="帳號" required="" autofocus="" />
 							<input type="password" class="form-control" name="password" placeholder="密碼" required=""/>      
 							<input type="hidden" name="action" value="login"/>      
-							<label class="checkbox my-3">
+							<label class="checkbox">
 									<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
 							</label>
+							<div>
+								<a href="../controller/memberController.php?action=forgetPassword">Forget password</a>
+							</div>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
             </form>
         <button id="go-top-btn">TOP</button>
