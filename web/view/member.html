@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    \{include file="common/resource.html"\}
+</head>
+<style>
+
+
+.btn-circle {
+    display:block;
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+    border: 5px solid black;
+}
+
+.w-member {
+    width: 60%;
+}
+
+@media (max-width: 1000px) {
+    .btn-circle {
+        display:block;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        border: 2px solid black;
+        font-size: 20px;
+    }
+}
+
+/* 1 row = 2 cols */
+@media (max-width: 800px) {
+    .btn-circle {
+        display:block;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        border: 2px solid black;
+        font-size: 15px;
+    }
+}
+
+/* 1 row = 1 col */
+@media (max-width: 480px) {
+    .btn-circle {
+        display:block;
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        border: 2px solid black;
+        font-size: 12px;
+    }
+
+    .w-member {
+        width: 90%;
+    }
+}
+
+</style>
+<body>
+    <div class="container-fluid content px-1 mx-1">
+        <!-- navigationbar -->
+        \{include file="common/navigationbar.html"\}
+        <!-- main-content -->
+    
+    
+        <div class="d-flex flex-row justify-content-between mx-auto mt-5 w-member">
+            <a href="../controller/memberController.php?action=memberDetailView"><button class="btn btn-secondary btn-circle">會員資料<br>修改</button></a>
+            <a href="../controller/memberController.php?action=orderRecordView"><button class="btn btn-secondary btn-circle">訂單查詢/<br>購買紀錄</button></a>
+            <a href="../controller/memberController.php?action=pointRecordView"><button class="btn btn-secondary btn-circle">點數查詢</button></a>
+        </div>
+
+        <div class="d-flex flex-row justify-content-between mx-auto mt-5 w-member">
+            <a href="../controller/memberController.php?action=couponView"><button class="btn btn-secondary btn-circle">專屬折價卷</button></a>
+            <a href="../controller/memberController.php?action=infoView"><button class="btn btn-secondary btn-circle">消息通知＆<br>通告</button></a>
+            <a href="../controller/memberController.php?action=cartView"><button class="btn btn-secondary btn-circle">購物車</button></a>
+        </div>
+
+    
+        <button id="go-top-btn">TOP</button>
+    </div>
+    <!-- footer -->
+    \{include file="common/footer.html"\}
+</body>
+
+</html>
