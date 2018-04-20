@@ -4,7 +4,7 @@ body {
     color: #555555;
     min-height: 150vh;
     flex-direction: column;
-    background: #f7f7f7;
+    background: #333333;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -15,7 +15,7 @@ footer {
 }
 .content {
     flex: 1;
-    margin-top: 115px;
+    /* margin-top: 61px; */
 }
 .text-black {
     color: black;
@@ -26,6 +26,14 @@ footer {
     background-color: #5a5a5a;
 }
 
+.bg-gray2 {
+    background-color: #333333;
+}
+
+.bg-yellow {
+    background-color: #f5ac51;
+}
+
 .bg-light2 {
     background-color: #eeeeee;
 }
@@ -33,6 +41,17 @@ footer {
 .bg-darkpink {
     background-color: #d3bbc5;
 }
+
+/* 改變導覽列 icon 圖 */
+.navbar-light .navbar-toggler {
+    color: rgba(255,255,255,.6);
+    border-color: rgba(255,255,255,.2);
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.6)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
 /* 導覽列固定上方 */
 .fixed-top2 {
     margin-top: 61px;
@@ -43,7 +62,7 @@ footer {
     overflow: hidden;
 }
 .nav-link-text span {
-    color: rgba(0, 0, 0, 0.8);
+    color: #fff;
     font-size: 16px;
     text-decoration: none;
     text-align: center;
