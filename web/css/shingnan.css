@@ -60,6 +60,28 @@ footer {
     margin-top: 0px;
 }
 
+/* 首頁圖片投影片 */
+.carousel-item {
+    height: 100vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.carousel-circle{
+    max-width: 10px !important;
+    height: 10px !important;
+    border-radius: 50%;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    background-color: #f5ac51 !important;  
+}
+.carousel-indicators .active {
+    background-color: #ffff99 !important;
+}
+
 /* 回到最上面按鈕 */
 #go-top-btn {
     display: none; /* Hidden by default */
