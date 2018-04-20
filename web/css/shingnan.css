@@ -2,9 +2,9 @@ body {
     line-height: 23px;
     display: flex;
     color: #555555;
-    min-height: 150vh;
+    min-height: 100vh;
     flex-direction: column;
-    background: #f7f7f7;
+    background: #333333;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -15,15 +15,41 @@ footer {
 }
 .content {
     flex: 1;
-    margin-top: 115px;
+    /* margin-top: 61px; */
 }
 .text-black {
     color: black;
 }
 
+/* 水平分割線 */
+.hr-seperate {
+    border: 1px solid white;
+}
+
+.hr-seperate-2 {
+    padding-top: 50px;
+    border: 1px solid #333333;
+}
+
 /* 背景顏色 */
 .bg-gray {
     background-color: #5a5a5a;
+}
+
+.bg-gray2 {
+    background-color: #333333;
+}
+
+.bg-gray3 {
+    background-color: #59524a;
+}
+
+.bg-black {
+    background-color: #000;
+}
+
+.bg-yellow {
+    background-color: #f5ac51;
 }
 
 .bg-light2 {
@@ -33,6 +59,17 @@ footer {
 .bg-darkpink {
     background-color: #d3bbc5;
 }
+
+/* 改變導覽列 icon 圖 */
+.navbar-light .navbar-toggler {
+    color: rgba(255,255,255,.6);
+    border-color: rgba(255,255,255,.2);
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.6)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
 /* 導覽列固定上方 */
 .fixed-top2 {
     margin-top: 61px;
@@ -43,7 +80,7 @@ footer {
     overflow: hidden;
 }
 .nav-link-text span {
-    color: rgba(0, 0, 0, 0.8);
+    color: #fff;
     font-size: 16px;
     text-decoration: none;
     text-align: center;
@@ -58,6 +95,50 @@ footer {
 }
 .nav-link-text:hover .nav-span {
     margin-top: 0px;
+}
+
+/* 首頁畫廊 */
+.cell-gallery-1 {
+    width:200px;
+    height: 475px;
+}
+
+.cell-gallery-2 {
+    width:200px;
+    height: 460px;
+}
+
+.cell-gallery-3 {
+    width:260px;
+    height: 400px;
+}
+
+.cell-gallery-4 {
+    width:250px;
+    height: 240px;
+}
+
+
+/* 首頁圖片投影片 */
+.carousel-item {
+    height: 100vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.carousel-circle{
+    max-width: 10px !important;
+    height: 10px !important;
+    border-radius: 50%;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    background-color: #f5ac51 !important;  
+}
+.carousel-indicators .active {
+    background-color: #ffff99 !important;
 }
 
 /* 回到最上面按鈕 */
@@ -147,6 +228,28 @@ footer {
     text-align: right;
 }
 
+@media (max-width: 1200px) {
+    /* 首頁畫廊 */
+    .cell-gallery-1 {
+        width: 150px;
+        height: 356px;
+    }
+
+    .cell-gallery-2 {
+        width: 150px;
+        height: 345px;
+    }
+
+    .cell-gallery-3 {
+        width:260px;
+        height: 300px;
+    }
+
+    .cell-gallery-4 {
+        width:250px;
+        height: 180px;
+    }
+}
 
 /* 1 row = 4 cols */
 @media (max-width: 1000px) {
@@ -154,6 +257,27 @@ footer {
         -ms-flex: 25%;
         flex: 25%;
         max-width: 25%;
+    }
+
+    /* 首頁畫廊 */
+    .cell-gallery-1 {
+        width: 140px;
+        height: 332px;
+    }
+
+    .cell-gallery-2 {
+        width:140px;
+        height: 322px;
+    }
+
+    .cell-gallery-3 {
+        width:182px;
+        height: 224px;
+    }
+
+    .cell-gallery-4 {
+        width:175px;
+        height: 168px;
     }
 }
 
@@ -167,6 +291,27 @@ footer {
 
     .gallery-text {
         font-size: 22px;
+    }
+
+    /* 首頁畫廊 */
+    .cell-gallery-1 {
+        width:180px;
+        height: 427px;
+    }
+
+    .cell-gallery-2 {
+        width:180px;
+        height: 414px;
+    }
+
+    .cell-gallery-3 {
+        width:234px;
+        height: 360px;
+    }
+
+    .cell-gallery-4 {
+        width:225px;
+        height: 216px;
     }
 }
 
