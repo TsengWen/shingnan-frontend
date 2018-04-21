@@ -6,11 +6,11 @@ require_once HOME_DIR . 'model/user.lib.php';
 $user = new User();
 
 $method = $_SERVER['REQUEST_METHOD'];
-
 switch ($method) {
     case 'POST':
         $action = isset($_POST['action']) ? $_POST['action'] : '';
         switch ($action) {
+
             default:
                 break;
         }
@@ -21,7 +21,7 @@ switch ($method) {
             case 'view':
                 $user->view();
                 break;
-            case 'memberDetailView':
+            case 'userDetailView':
                 $user->userDetailView();
                 break;
             case 'orderRecordView':
@@ -39,8 +39,10 @@ switch ($method) {
             case 'cartView':
                 $user->cartView();
                 break;
+            case 'editUserDetail':
+                $user->editUserDetail($_GET);
+                break;
             default:
-                
                 break;
         }
         break;

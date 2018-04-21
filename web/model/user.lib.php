@@ -61,10 +61,10 @@ class User
             $this->viewLogin();
             return ;
         }
-        $userId = $input['userId'];
+        $userId = $_SESSION['userId'];
         $sql = "SELECT `user`.`userId`, `user`.`userName`,
                        `user`.`account`, `user`.`phone`, 
-                       `user`.`address`, `user`.`email`
+                       `user`.`address`, `user`.`birthday`
                 FROM  `user`
                 WHERE  `user`.`userId` = :userId AND `user`.`isDelete` = 0";
 
@@ -75,8 +75,42 @@ class User
 
 
         $this->smarty->assign('userDetailData', $userDetailData);
-        $this->smarty->assign('userId', $_SESSION['userId']);
+        $this->smarty->assign('userId', $userId);
         $this->smarty->display('user/userDetail.html');
+    }
+
+    public function editUserDetail($input)
+    {
+        if(!isset($_SESSION['isLogin'])) {
+            $this->viewLogin();
+            return ;
+        }
+
+        $userId = $_SESSION["userId"];
+        $sql = "UPDATE `shingnan`.`user`
+                SET  `lastUpdateTime` = :lastUpdateTime,
+                     `userName` = :userName, 
+                     `userId` = :userId, `phone` = :phone,
+                     `address` = :address, `birthday` = :birthday
+                WHERE `userId` = :userId;";
+
+        $now = date('Y-m-d H:i:s');
+        $res = $this->db->prepare($sql);
+
+        $res->bindParam(':birthday', $input['birthday'], PDO::PARAM_STR);
+        $res->bindParam(':lastUpdateTime', $now, PDO::PARAM_STR);
+        $res->bindParam(':userId', $userId, PDO::PARAM_STR);
+        $res->bindParam(':phone', $input['phone'], PDO::PARAM_STR);
+        $res->bindParam(':userName', $input['userName'], PDO::PARAM_STR);
+        $res->bindParam(':address', $input['address'], PDO::PARAM_STR);
+        if(!$res->execute()) {
+            $error = $res->errorInfo();
+            $this->setResultMsg('failure', $error[0]);
+        }
+
+
+        header("Location:../controller/userController.php?action=userDetailView");
+
     }
 
     public function orderRecordView() 
@@ -85,6 +119,18 @@ class User
             $this->viewLogin();
             return ;
         }
+        $userId = _SESSION["userId"];
+        
+        // TODO: SQL string 
+        $sql = "SELECT `tran`.`tranId`, `tran`.`createTime`, `tran`.`checkState`, `tran`.`price`, `tranDetail`.`itemId`, `tranDetail`.`itemNum`
+        FROM `tran` 
+        LEFT JOIN `tranDetail` ON `tran`.`tranId` = `tranDetail`.`tranId`
+        WHERE `userID` = '{$userId}';";
+        $res = $this->db->prepare($sql);
+        $res->execute();
+        $tranResult = $res->fetchAll();
+
+        
         $this->smarty->display('user/orderRecord.html');
     }
 
