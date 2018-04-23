@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    \{include file="common/resource.html"\}
+</head>
+<style>
+</style>
+
+<body>
+    <div class="container-fluid content px-1 mx-1">
+        <!-- navigationbar -->
+        \{include file="common/navigationbar.html"\}
+        <!-- main-content -->
+        \{if $msg == 'failure'\}
+        <div class="alert alert-warning alert-dismissable text-center">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4 style="display: inline;">\{$error\}</h4>
+        </div>
+        \{/if\}
+
+
+
+        <div class=" mx-auto mt-1">
+            <div class="alert alert-light mx-auto my-3" role="alert" style="background-color:#E8E6D9; width: 60%;">
+                修改會員資料
+            </div>
+
+            <form action="../controller/userController.php">
+                <table class="table mx-auto" style="width:60%; border-style: outset;  border-collapse: separate; border-spacing: 20px;">
+                    <tbody>
+                        <tr class>
+                            <th scope="row" class="w=25" style="">會員帳號</th>
+                            <td class="w-75">\{$userDetailData.account\}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">姓名</th>
+                            <td>
+                                <input name="userName" class="form-control" value="\{$userDetailData.userName\}" required>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">生日</th>
+                            <td>
+                                <!-- TODO: data picker -->
+                                <input name="birthday" class="form-control" value="\{$userDetailData.birthday\}" required>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <th scope="row">手機號碼</th>
+                            <td>
+                                <input name="phone" class="form-control" value="\{$userDetailData.phone\}" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">寄件地址</th>
+                            <td>
+                                <input name="address" class="form-control" value="\{$userDetailData.address\}" required>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <th scope="row"></th>
+                            <td>
+                                <div align="right">
+                                    <input type="hidden" name="action" value="editUserDetail">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+
+
+        </form>
+        <button id="go-top-btn">TOP</button>
+    </div>
+    <!-- footer -->
+    \{include file="common/footer.html"\}
+</body>
+
+</html>

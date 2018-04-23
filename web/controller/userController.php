@@ -1,15 +1,16 @@
 <?php
 //initialize
 require_once '../configs/source.php';
-require_once HOME_DIR . 'model/member.lib.php';
+require_once HOME_DIR . 'model/user.lib.php';
 
-$member = new Member();
+$user = new User();
 
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'POST':
         $action = isset($_POST['action']) ? $_POST['action'] : '';
         switch ($action) {
+
             default:
                 break;
         }
@@ -18,28 +19,30 @@ switch ($method) {
         $action = isset($_GET['action']) ? $_GET['action'] : 'view';
         switch ($action) {
             case 'view':
-                $member->view();
+                $user->view();
                 break;
-            case 'memberDetailView':
-                $member->memberDetailView();
+            case 'userDetailView':
+                $user->userDetailView();
                 break;
             case 'orderRecordView':
-                $member->orderRecordView();
+                $user->orderRecordView();
                 break;
             case 'pointRecordView':
-                $member->pointRecordView();
+                $user->pointRecordView();
                 break;
             case 'couponView':
-                $member->couponView();
+                $user->couponView();
                 break;
             case 'infoView':
-                $member->infoView();
+                $user->infoView();
                 break;
             case 'cartView':
-                $member->cartView();
+                $user->cartView();
+                break;
+            case 'editUserDetail':
+                $user->editUserDetail($_GET);
                 break;
             default:
-                
                 break;
         }
         break;
