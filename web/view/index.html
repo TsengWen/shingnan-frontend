@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <div class="container-fluid content p-0">
+  <div class="container-fluid index-content p-0">
     <!-- navigationbar -->
     \{include file="common/navigationbar.html"\}
     <!-- main-content -->
@@ -29,62 +29,65 @@
         <div class="carousel-item">
           <img class="d-block img-fluid" src="\{if empty($images['index_img_2'])\}\{$images['index_img_2']\}\{else\}../img/cover.png\{/if\}">
         </div>
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+        <div class="carousel-item">
+          <img class="d-block img-fluid" src="\{if empty($images['index_img_2'])\}\{$images['index_img_2']\}\{else\}../img/cover.png\{/if\}">
         </div>
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1024')">
+        <div class="carousel-item">
+          <!-- style="background-image: url('http://placehold.it/1900x1024')" -->
+          <img class="d-block img-fluid" src="\{if empty($images['index_img_2'])\}\{$images['index_img_2']\}\{else\}../img/cover.png\{/if\}">
         </div>
       </div>
     </div>
     <hr class="m-0 w-100 hr-seperate">
     <!-- test gallery -->
-    <div class="d-flex justify-content-between mx-auto" style="height: 1900px; width: 90%;">
+    <div class="d-flex justify-content-between gallery-size mx-auto">
       <!-- one col -->
       <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-1" style="margin-bottom: 400px;">
+        <div class="bg-gray3 cell-gallery-1" style="margin-top:0px;">
         </div>
         <div class="bg-gray3 cell-gallery-2">
         </div>
       </div>
       <!-- two col -->
       <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-3" style="margin-bottom: 20px;">
+        <div class="bg-gray3 cell-gallery-3" style="margin-top:0px;">
         </div>
-        <div class="bg-gray3 cell-gallery-3" style="margin-bottom: 20px;">
+        <div class="bg-gray3 cell-gallery-3">
         </div>
-        <div class="bg-gray3 cell-gallery-3" style="margin-bottom: 20px;">
+        <div class="bg-gray3 cell-gallery-3">
         </div>
         <div class="bg-gray3 cell-gallery-3">
         </div>
       </div>
       <!-- three col -->
       <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-4" style="margin-bottom: 50px;">
+        <div class="bg-gray3 cell-gallery-4" style="margin-top:0px;">
         </div>
-        <div class="bg-gray3 cell-gallery-4" style="margin-bottom: 50px;">
+        <div class="bg-gray3 cell-gallery-4">
         </div>
-        <div class="bg-gray3 cell-gallery-4" style="margin-bottom: 50px;">
+        <div class="bg-gray3 cell-gallery-4">
         </div>
-        <div class="bg-gray3 cell-gallery-4" style="margin-bottom: 50px;">
+        <div class="bg-gray3 cell-gallery-4">
         </div>
-        <div class="bg-gray3 cell-gallery-4" style="margin-bottom: 50px;">
+        <div class="bg-gray3 cell-gallery-4">
         </div>
-        <div class="bg-gray3 cell-gallery-4" style="margin-bottom: 0px;">
+        <div class="bg-gray3 cell-gallery-4">
         </div>
       </div>
       <!-- four col -->
       <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-3" style="margin-bottom: 20px;">
+        <div class="bg-gray3 cell-gallery-3" style="margin-top:0px;">
         </div>
-        <div class="bg-gray3 cell-gallery-3" style="margin-bottom: 20px;">
+        <div class="bg-gray3 cell-gallery-3">
         </div>
-        <div class="bg-gray3 cell-gallery-3" style="margin-bottom: 20px;">
+        <div class="bg-gray3 cell-gallery-3">
         </div>
         <div class="bg-gray3 cell-gallery-3">
         </div>
       </div>
       <!-- five col -->
       <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-1" style="margin-bottom: 400px;">
+        <div class="bg-gray3 cell-gallery-1" style="margin-top:0px;">
         </div>
         <div class="bg-gray3 cell-gallery-2">
         </div>
@@ -92,30 +95,42 @@
     </div>
     <hr class="m-0 w-100 hr-seperate">
     <!-- brand col -->
-    <div class="w-100">
-      <div class="bg-gray3 hr-seperate float-left" style=" width: 25%; height: 383px;"></div>
-      <div class="bg-black hr-seperate float-right" style=" width: 75%; height: 383px;"></div>
-    </div>
-    <div class="w-100">
-      <div class="bg-black hr-seperate float-left" style=" width: 75%; height: 383px;"></div>
-      <div class="bg-gray3 hr-seperate float-right" style=" width: 25%; height: 383px;"></div>
-    </div>
-    <div class="w-100">
-      <div class="bg-gray3 hr-seperate float-left" style=" width: 25%; height: 383px;"></div>
-      <div class="bg-black hr-seperate float-right" style=" width: 75%; height: 383px;"></div>
-    </div>
-    <div class="w-100">
-      <div class="bg-black hr-seperate float-left" style=" width: 75%; height: 383px;"></div>
-      <div class="bg-gray3 hr-seperate float-right" style=" width: 25%; height: 383px;"></div>
+    <div class="row w-100 mx-0">
+      <div class="bg-gray3 hr-seperate col-lg-4 col-md-5 col-sm-12" style="height: 383px;"></div>
+      <div class="bg-black hr-seperate col-lg-8 col-md-7 col-sm-12" style="height: 383px;"></div>
+      <div class="bg-gray3 hr-seperate col-lg-8 col-md-7 col-sm-12" style="height: 383px;"></div>
+      <div class="bg-black hr-seperate col-lg-4 col-md-5 col-sm-12" style="height: 383px;"></div>
+      <div class="bg-gray3 hr-seperate col-lg-4 col-md-5 col-sm-12" style="height: 383px;"></div>
+      <div class="bg-black hr-seperate col-lg-8 col-md-7 col-sm-12" style="height: 383px;"></div>
+      <div class="bg-gray3 hr-seperate col-lg-8 col-md-7 col-sm-12" style="height: 383px;"></div>
+      <div class="bg-black hr-seperate col-lg-4 col-md-5 col-sm-12" style="height: 383px;"></div>
     </div>
     <hr class="m-0 w-100 hr-seperate">
-    <div class="bg-yellow d-flex justify-content-center p-3">
-      <div class="hr-seperate bg-black" style="width: 32%; height: 1000px;">
+    <!-- gradient shape -->
+    <div class="bg-yellow w-100 p-3 trapezoidal d-flex justify-content-center mx-auto">
+      <div class="bg-black trapezoidal-1">
+        <img class="img-1" src="../img/cover.png">
+        <img class="img-2" src="../img/cover.png">
       </div>
-      <div class="hr-seperate bg-black" style="width: 32%; height: 1000px;">
+      <div class="bg-black trapezoidal-3">
+        <img class="img-1" src="../img/cover.png">
       </div>
-      <div class="hr-seperate bg-black" style="width: 32%; height: 1000px;">
+      <div class="bg-black trapezoidal-2">
+        <img class="img-1" src="../img/cover.png">
+        <img class="img-2" src="../img/cover.png">
       </div>
+      <!-- <div class="hr-seperate bg-black trapezoidal2">
+        <img src="../img/02.jpg">
+      </div> -->
+      <!-- <div class="hr-seperate bg-black trapezoidal0">
+        <img src="../img/01.jpg">
+      </div>
+      <div class="hr-seperate bg-black trapezoidal3">
+        <img src="../img/01.jpg">
+      </div>
+      <div class="hr-seperate bg-black trapezoidal4">
+        <img src="../img/01.jpg">
+      </div> -->
     </div>
     <hr class="m-0 w-100 hr-seperate-2">
     <!-- image gallery -->
@@ -131,9 +146,10 @@
     </div> -->
     <!-- got top button -->
     <button id="go-top-btn">TOP</button>
+    <!-- footer -->
+    \{include file="common/footer.html"\}
   </div>
-  <!-- footer -->
-  \{include file="common/footer.html"\}
+
 </body>
 
 </html>
