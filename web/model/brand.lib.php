@@ -36,25 +36,27 @@ class Brand
      * 顯示首頁
      */
     public function view() {
-        if ($_SESSION['isLogin'] == true) {
-            // member login
-        } else {
-            
-            $this->smarty->assign('title', '品牌介紹');
-            $this->smarty->display('brand.html');
-        }
+        // if ($_SESSION['isLogin'] == true) {
+        //     // member login
+        // } else { 
+        // }
+
+        $this->smarty->assign('title', '品牌介紹');
+        $this->smarty->display('brand.html');
     }
 
     /**
      * 顯示品牌詳細資料
      */
     public function viewDetail() {
-        if ($_SESSION['isLogin'] == true) {
-            // member login
-        } else {
-            $this->smarty->assign('title', '品牌介紹');
-            $this->smarty->display('brand_detail.html');
-        }
+        // if ($_SESSION['isLogin'] == true) {
+        //     // member login
+        // } else {
+            
+        // }
+
+        $this->smarty->assign('title', '品牌介紹');
+        $this->smarty->display('brand_detail.html');
     }
 
     /**

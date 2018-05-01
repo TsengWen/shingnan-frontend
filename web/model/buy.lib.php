@@ -42,38 +42,39 @@ class Buy
             // member login
         } else {
 
-            $sql = "SELECT * FROM `brand`
+        }
+
+        $sql = "SELECT * FROM `brand`
                     WHERE `isDelete` = 0
                     ORDER BY `lastUpdateTime`
                     DESC LIMIT 0, 8";
-            $res = $this->db->prepare($sql);
+        $res = $this->db->prepare($sql);
 
-            if ($res->execute()) {
-                $brands = $res->fetchAll();
+        if ($res->execute()) {
+            $brands = $res->fetchAll();
 
-                $this->setResultMsg();
-                $this->smarty->assign('brands', $brands);
-            } else {
-                $error = $res->errorInfo();
-                $this->setResultMsg('failure', $error[0]);
-            }
-
-            $sql = "SELECT * FROM `style` WHERE `isDelete` = 0";
-            $res = $this->db->prepare($sql);
-
-            if ($res->execute()) {
-                $styles = $res->fetchAll();
-
-                $this->setResultMsg();
-                $this->smarty->assign('styles', $styles);
-            } else {
-                $error = $res->errorInfo();
-                $this->setResultMsg('failure', $error[0]);
-            }
-
-            $this->smarty->assign('title', '眼鏡選購');
-            $this->smarty->display('buy.html');
+            $this->setResultMsg();
+            $this->smarty->assign('brands', $brands);
+        } else {
+            $error = $res->errorInfo();
+            $this->setResultMsg('failure', $error[0]);
         }
+
+        $sql = "SELECT * FROM `style` WHERE `isDelete` = 0";
+        $res = $this->db->prepare($sql);
+
+        if ($res->execute()) {
+            $styles = $res->fetchAll();
+
+            $this->setResultMsg();
+            $this->smarty->assign('styles', $styles);
+        } else {
+            $error = $res->errorInfo();
+            $this->setResultMsg('failure', $error[0]);
+        }
+
+        $this->smarty->assign('title', '眼鏡選購');
+        $this->smarty->display('buy.html');
     }
 
     /**
@@ -81,13 +82,13 @@ class Buy
      */
     public function viewDetail()
     {
-        if ($_SESSION['isLogin'] == true) {
-            // member login
-        } else {
+        // if ($_SESSION['isLogin'] == true) {
+        //     // member login
+        // } else {
+        // }
 
-            $this->smarty->assign('title', '眼鏡選購');
-            $this->smarty->display('buy_detail.html');
-        }
+        $this->smarty->assign('title', '眼鏡選購');
+        $this->smarty->display('buy_detail.html');
     }
 
     /**
