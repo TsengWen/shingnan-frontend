@@ -119,7 +119,7 @@ class User
             $this->viewLogin();
             return ;
         }
-        $userId = _SESSION["userId"];
+        $userId = $_SESSION["userId"];
         
         // TODO: SQL string 
         $sql = "SELECT `tran`.`tranId`, `tran`.`createTime`, `tran`.`checkState`, `tran`.`price`, `tranDetail`.`itemId`, `tranDetail`.`itemNum`
