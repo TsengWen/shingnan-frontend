@@ -39,10 +39,10 @@ class User
      * 會員頁面
      */
     public function view()
-    {   
-        if(!isset($_SESSION['isLogin'])) {
+    {
+        if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
-            return ;
+            return;
         }
         $this->smarty->display('user/userDashboard.html');
     }
@@ -57,9 +57,9 @@ class User
      */
     public function userDetailView()
     {
-        if(!isset($_SESSION['isLogin'])) {
+        if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
-            return ;
+            return;
         }
         $userId = $_SESSION['userId'];
         $sql = "SELECT `user`.`userId`, `user`.`userName`,
@@ -81,9 +81,9 @@ class User
 
     public function editUserDetail($input)
     {
-        if(!isset($_SESSION['isLogin'])) {
+        if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
-            return ;
+            return;
         }
 
         $userId = $_SESSION["userId"];
@@ -103,7 +103,7 @@ class User
         $res->bindParam(':phone', $input['phone'], PDO::PARAM_STR);
         $res->bindParam(':userName', $input['userName'], PDO::PARAM_STR);
         $res->bindParam(':address', $input['address'], PDO::PARAM_STR);
-        if(!$res->execute()) {
+        if (!$res->execute()) {
             $error = $res->errorInfo();
             $this->setResultMsg('failure', $error[0]);
         }
@@ -113,61 +113,94 @@ class User
 
     }
 
-    public function orderRecordView() 
+    public function orderRecordView()
     {
-        if(!isset($_SESSION['isLogin'])) {
+        if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
-            return ;
+            return;
         }
         $userId = $_SESSION["userId"];
-        
-        // TODO: SQL string 
-        $sql = "SELECT `tran`.`tranId`, `tran`.`createTime`, `tran`.`checkState`, `tran`.`price`, `tranDetail`.`itemId`, `tranDetail`.`itemNum`
-        FROM `tran` 
-        LEFT JOIN `tranDetail` ON `tran`.`tranId` = `tranDetail`.`tranId`
-        WHERE `userID` = '{$userId}';";
-        $res = $this->db->prepare($sql);
-        $res->execute();
-        $tranResult = $res->fetchAll();
 
-        
+        $sql = "SELECT `tran`.`tranId`, `tran`.`createTime`, `tran`.`checkState`, `tran`.`price`
+        FROM `tran` 
+        WHERE `userID` = '{$userId}' AND `tran`.`isDelete` = 0;";
+        $res = $this->db->prepare($sql);
+        if(!$res->execute()) {
+            goto failed;
+        }
+        $allTrans = $res->fetchAll();
+
+        foreach ($allTrans as &$singleTran) {
+            $sql = "SELECT `tranDetail`.`itemId`, `tranDetail`.`itemNum`
+            FROM `tranDetail` 
+            WHERE `tranDetail`.`tranId` = '{$singleTran["tranId"]}' AND `tranDetail`.`isDelete` = 0;";
+            $res = $this->db->prepare($sql);
+            if(!$res->execute()){
+                goto failed;
+            }
+            $tranDetail = $res->fetchAll();
+            $singleTran["tranDetail"] = $tranDetail;
+            
+
+            // get item name
+            foreach ($singleTran["tranDetail"] as &$singleItem) {
+                $whichItem = explode("_", $singleItem["itemId"])[0]; // exmaple: frame_1234 will return frame
+                $sql = "SELECT `{$whichItem}`.`{$whichItem}Name`
+                FROM `{$whichItem}` 
+                WHERE `{$whichItem}`.`{$whichItem}Id` = '{$singleItem["itemId"]}';";
+                $res = $this->db->prepare($sql);
+
+                if(!$res->execute()){
+                    goto failed;
+                }
+                $resItem = $res->fetch();
+                $itemName = $resItem["{$whichItem}Name"];
+                $singleItem["itemName"] = $itemName;
+            }
+        }
+        $this->smarty->assign('allTrans', $allTrans);
         $this->smarty->display('user/orderRecord.html');
+        return;
+
+        failed :
+        $error = $res->errorInfo();
+        $this->setResultMsg('failure', $error[0]);
     }
 
     public function pointRecordView()
     {
-        if(!isset($_SESSION['isLogin'])) {
+        if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
-            return ;
+            return;
         }
         $this->smarty->display('user/pointRecord.html');
     }
 
     public function couponView()
     {
-        if(!isset($_SESSION['isLogin'])) {
+        if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
-            return ;
+            return;
         }
         $this->smarty->display('user/coupon.html');
-        
+
     }
 
     public function infoView()
     {
-        if(!isset($_SESSION['isLogin'])) {
+        if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
-            return ;
+            return;
         }
         $this->smarty->display('user/info.html');
-        
+
     }
 
     public function cartView()
     {
-        if(!isset($_SESSION['isLogin'])) {
+        if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
-            return ;
+            return;
         }
         $this->smarty->display('user/cart.html');
     }

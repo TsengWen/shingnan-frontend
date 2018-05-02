@@ -5,7 +5,17 @@
     \{include file="common/resource.html"\}
 </head>
 <style>
+    tr.collapse.in {
+        display: table-row;
+    }
 </style>
+
+<script>
+    // $(document).ready(function () {
+    //     $("#table").load(location.href + " #table");
+    // });
+
+</script>
 
 <body>
     <div class="container-fluid content px-1 mx-1">
@@ -19,51 +29,49 @@
         </div>
         \{/if\}
 
-
         <table class="table mx-auto mt-5" style="width:60%">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">訂單編號</th>
-                    <th scope="col">訂購時間</th>
-                    <th scope="col">付款方式</th>
-                    <th scope="col">訂單金額</th>
-                    <th scope="col">商品名稱</th>
-                    <th scope="col">數量</th>
-
-
+                    <th></th>
+                    <th>訂單編號</th>
+                    <th>訂購時間</th>
+                    <th>價格</th>
+                    <th>狀態處理</th>
                 </tr>
             </thead>
-
             <tbody>
-                <tr>
-                    <td></td>
+                \{foreach from=$allTrans item=singleTran\}
+                <tr data-toggle="collapse" data-target=".\{$singleTran["tranId"]\}">
+                    <td>+</td>
+                    <td>\{$singleTran["tranId"]\}</td>
+                    <td>\{$singleTran["createTime"]\}</td>
+                    <td>\{$singleTran["price"]\}</td>
+                    <td>\{$singleTran["checkState"]\}</td>
+
                 </tr>
-                <tr>
-                    <td></td>
+
+                <tr class="collapse \{$singleTran["tranId"]\}">
+                    <td colspan="5">
+                        \{foreach from=$singleTran["tranDetail"] item=singleItem\}
+                            \{$singleItem["itemName"]\} * \{$singleItem["itemNum"]\} &nbsp;&nbsp;
+                        \{/foreach\}
+                    </td>
                 </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
+                \{/foreach\}
+
+
 
             </tbody>
         </table>
+
+
+
+
         <button id="go-top-btn">TOP</button>
     </div>
     <!-- footer -->
     \{include file="common/footer.html"\}
 </body>
+
 
 </html>
