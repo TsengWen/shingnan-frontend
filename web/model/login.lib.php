@@ -35,7 +35,7 @@ class Login
 
     public function isValidInput($input)
     {
-        $input['account']  = trim($input['account']);
+        $input['account'] = trim($input['account']);
         $input['password'] = trim($input['password']);
         // 測試是否為空值
         if (strlen($input['account']) == 0) {
@@ -55,38 +55,34 @@ class Login
      */
     public function login($input)
     {
-        try {
             // use SQL get password
-            $sql = "SELECT `user`.`userId`, `user`.`account`, `user`.`password` 
+        $sql = "SELECT `user`.`userId`, `user`.`account`, `user`.`password` 
                     FROM `user` 
                     WHERE `user`.`account` = :account;";
-            $res = $this->db->prepare($sql);
-            $res->bindParam(':account', $input['account'], PDO::PARAM_STR);
-            if(!$res->execute()){
-                $this->error = '帳號輸入錯誤';
-                $this->viewLogin();
-                return ;
-            }
-
-            $result = $res->fetch();
-
-            if (password_verify($input['password'], $result['password'])) {
-                // set the session
-                $_SESSION['isLogin'] = true;
-                $_SESSION['userId']  = $result['userId'];
-                $_SESSION['account'] = $input['account'];
-                $this->error = ''; // clear the error message
-                header("Location:../controller/userController.php?action=view");
-
-            } else {
-                $this->error = '密碼輸入錯誤';
-                $this->viewLogin();
-            }
-
-        } catch (Exception $e) {
-            print 'Exception : ' . $e->getMessage();
-
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':account', $input['account'], PDO::PARAM_STR);
+        if (!$res->execute()) {
+            $this->error = '帳號輸入錯誤';
+            $this->viewLogin();
+            return;
         }
+
+        $result = $res->fetch();
+
+        if (password_verify($input['password'], $result['password'])) {
+                // set the session
+            $_SESSION['isLogin'] = true;
+            $_SESSION['userId'] = $result['userId'];
+            $_SESSION['account'] = $input['account'];
+            $this->error = ''; // clear the error message
+            header("Location:../controller/userController.php?action=view");
+
+
+        } else {
+            $this->error = '密碼輸入錯誤';
+            $this->viewLogin();
+        }
+
 
     }
     /**
