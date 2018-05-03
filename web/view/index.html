@@ -5,7 +5,7 @@
   \{include file="common/resource.html"\}
 </head>
 
-<body>
+<body class="dark-theme">
   <div class="container-fluid index-content p-0">
     <!-- navigationbar -->
     \{include file="common/navigationbar.html"\}
@@ -41,71 +41,54 @@
     <hr class="m-0 w-100 hr-seperate">
     <!-- test gallery -->
     <div class="d-flex justify-content-between gallery-size mx-auto">
-      <!-- one col -->
+      \{for $i=1 to 5\} \{if $i % 3 == 1\}
       <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-1" style="margin-top:0px;">
+        <div class="gallery-col-1" style="margin-top:0px;">
         </div>
-        <div class="bg-gray3 cell-gallery-2">
+        <div class="gallery-col-2">
         </div>
       </div>
-      <!-- two col -->
+      \{elseif $i % 3 == 2\}
       <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-3" style="margin-top:0px;">
+        <div class="gallery-col-3" style="margin-top:0px;">
         </div>
-        <div class="bg-gray3 cell-gallery-3">
+        <div class="gallery-col-3">
         </div>
-        <div class="bg-gray3 cell-gallery-3">
+        <div class="gallery-col-3">
         </div>
-        <div class="bg-gray3 cell-gallery-3">
+        <div class="gallery-col-3">
         </div>
       </div>
-      <!-- three col -->
+      \{else\}
       <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-4" style="margin-top:0px;">
+        <div class="gallery-col-4" style="margin-top:0px;">
         </div>
-        <div class="bg-gray3 cell-gallery-4">
+        <div class="gallery-col-4">
         </div>
-        <div class="bg-gray3 cell-gallery-4">
+        <div class="gallery-col-4">
         </div>
-        <div class="bg-gray3 cell-gallery-4">
+        <div class="gallery-col-4">
         </div>
-        <div class="bg-gray3 cell-gallery-4">
+        <div class="gallery-col-4">
         </div>
-        <div class="bg-gray3 cell-gallery-4">
+        <div class="gallery-col-4">
         </div>
       </div>
-      <!-- four col -->
-      <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-3" style="margin-top:0px;">
-        </div>
-        <div class="bg-gray3 cell-gallery-3">
-        </div>
-        <div class="bg-gray3 cell-gallery-3">
-        </div>
-        <div class="bg-gray3 cell-gallery-3">
-        </div>
-      </div>
-      <!-- five col -->
-      <div class="my-auto d-flex flex-column">
-        <div class="bg-gray3 cell-gallery-1" style="margin-top:0px;">
-        </div>
-        <div class="bg-gray3 cell-gallery-2">
-        </div>
-      </div>
+      \{/if\} \{/for\}
     </div>
-    <hr class="m-0 w-100 hr-seperate">
+    <hr class="m-0 w-100 hr-1">
     <!-- brand col -->
     <div class="row w-100 mx-0">
-      <div class="bg-gray3 hr-seperate col-lg-4 col-md-5 col-sm-12" style="height: 383px;"></div>
-      <div class="bg-black hr-seperate col-lg-8 col-md-7 col-sm-12" style="height: 383px;"></div>
-      <div class="bg-gray3 hr-seperate col-lg-8 col-md-7 col-sm-12" style="height: 383px;"></div>
-      <div class="bg-black hr-seperate col-lg-4 col-md-5 col-sm-12" style="height: 383px;"></div>
-      <div class="bg-gray3 hr-seperate col-lg-4 col-md-5 col-sm-12" style="height: 383px;"></div>
-      <div class="bg-black hr-seperate col-lg-8 col-md-7 col-sm-12" style="height: 383px;"></div>
-      <div class="bg-gray3 hr-seperate col-lg-8 col-md-7 col-sm-12" style="height: 383px;"></div>
-      <div class="bg-black hr-seperate col-lg-4 col-md-5 col-sm-12" style="height: 383px;"></div>
+      <div class="brand-col-1 hr-1 col-lg-4 col-md-5 col-sm-12"></div>
+      <div class="brand-col-2 hr-1 col-lg-8 col-md-7 col-sm-12"></div>
+      <div class="brand-col-2 hr-1 col-lg-8 col-md-7 col-sm-12"></div>
+      <div class="brand-col-1 hr-1 col-lg-4 col-md-5 col-sm-12"></div>
+      <div class="brand-col-1 hr-1 col-lg-4 col-md-5 col-sm-12"></div>
+      <div class="brand-col-2 hr-1 col-lg-8 col-md-7 col-sm-12"></div>
+      <div class="brand-col-2 hr-1 col-lg-8 col-md-7 col-sm-12"></div>
+      <div class="brand-col-1 hr-1 col-lg-4 col-md-5 col-sm-12"></div>
     </div>
-    <hr class="m-0 w-100 hr-seperate">
+    <hr class="m-0 w-100 hr-1">
     <!-- gradient shape -->
     <div class="bg-yellow w-100 p-3 trapezoidal d-flex justify-content-center mx-auto">
       <div class="bg-black trapezoidal-1">
@@ -120,7 +103,7 @@
         <img class="img-2" src="../img/cover.png">
       </div>
     </div>
-    <hr class="m-0 w-100 hr-seperate-2">
+    <hr class="m-0 w-100 hr-2">
     <!-- image gallery -->
     <!-- <div class="row-cus">
       \{for $i = 3 to 22\}
@@ -137,7 +120,6 @@
     <!-- footer -->
     \{include file="common/footer.html"\}
   </div>
-
 </body>
 
 </html>
