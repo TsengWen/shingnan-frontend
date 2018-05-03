@@ -4,15 +4,15 @@
 <head>
     \{include file="common/resource.html"\}
     <style>
-      .map {
-        height: 350px;
-        width:100%;
-      }
+        .map {
+            height: 350px;
+            width: 100%;
+        }
     </style>
-    
+
 </head>
 
-<body>
+<body class="dark-theme">
     <div class="container-fluid content p-0">
         <!-- navigationbar -->
         \{include file="common/navigationbar.html"\}
@@ -20,10 +20,8 @@
 
 
         <div class="row mx-auto mb-3" style="width: 100%; color:white;">
-            <h4 class="mt-5 text-left" >歡迎與我們聯絡</h4>
-            <hr class="mb-4" style="width: 100%; border-top: 3px solid #bfc3c4;">
-            
-            \{foreach from=$store item=s key=i\}
+            <h4 class="mt-5 text-left">歡迎與我們聯絡</h4>
+            <hr class="mb-4" style="width: 100%; border-top: 3px solid #bfc3c4;"> \{foreach from=$store item=s key=i\}
             <div class="mt-5 col-7 text-right">
                 <div class="map" id="map\{$i\}"></div>
             </div>
@@ -40,50 +38,54 @@
             <h4 class="mt-5 text-left">社群連結</h4>
             <hr class="mb-4" style="width: 100%; border-top: 3px solid #bfc3c4;">
             <div class="d-flex align-items-center">
-                <a href="https://www.facebook.com/tainan.shingnan/?hc_ref=ARRVhUNFgLnDC9djAB0EuNjDeBfJGGo6aVruH3E1dpSHhHTfqpiealw6Xn2SZp0uhxQ&fref=nf"><img src="../img/facebook_icon.png" width="35px"></a>
+                <a href="https://www.facebook.com/tainan.shingnan/?hc_ref=ARRVhUNFgLnDC9djAB0EuNjDeBfJGGo6aVruH3E1dpSHhHTfqpiealw6Xn2SZp0uhxQ&fref=nf">
+                    <img src="../img/facebook_icon.png" width="35px">
+                </a>
                 &nbsp&nbsp
-                <a href="https://www.facebook.com/tainan.shingnan/?hc_ref=ARRVhUNFgLnDC9djAB0EuNjDeBfJGGo6aVruH3E1dpSHhHTfqpiealw6Xn2SZp0uhxQ&fref=nf"><img src="../img/ig_icon.png" width="35px" ></a>
+                <a href="https://www.facebook.com/tainan.shingnan/?hc_ref=ARRVhUNFgLnDC9djAB0EuNjDeBfJGGo6aVruH3E1dpSHhHTfqpiealw6Xn2SZp0uhxQ&fref=nf">
+                    <img src="../img/ig_icon.png" width="35px">
+                </a>
             </div>
 
         </div>
-        
-        
-        </div>
-        <!-- got top button -->
-        <button id="go-top-btn">TOP</button>
+
+
+    </div>
+    <!-- got top button -->
+    <button id="go-top-btn">TOP</button>
     </div>
     <!-- footer -->
     \{include file="common/footer.html"\}
 </body>
-    <script>
-        var x = \{$lat|json_encode\};
-        var y = \{$lng|json_encode\};
+<script>
+    var x = \{ $lat| json_encode\};
+    var y = \{ $lng| json_encode\};
 
-        function initMap() {
+    function initMap() {
 
-            var latlng = [];
-            var myMarker = [];
-            var map = [];
-            var myOptions = [];
-            for(var i = 0; i < x.length; i++)
-            {
-                latlng[i] = new google.maps.LatLng(x[i], y[i]);
+        var latlng = [];
+        var myMarker = [];
+        var map = [];
+        var myOptions = [];
+        for (var i = 0; i < x.length; i++) {
+            latlng[i] = new google.maps.LatLng(x[i], y[i]);
 
-                myOptions[i] = {
-                    zoom: 19,
-                    center: latlng[i],
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
+            myOptions[i] = {
+                zoom: 19,
+                center: latlng[i],
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
 
-                map[i] = new google.maps.Map(document.getElementById('map' + i ), myOptions[i]);
+            map[i] = new google.maps.Map(document.getElementById('map' + i), myOptions[i]);
 
-                myMarker[i] = new google.maps.Marker({
-                    position: latlng[i],
-                    map: map[i],
-                });
+            myMarker[i] = new google.maps.Marker({
+                position: latlng[i],
+                map: map[i],
+            });
 
-            }
         }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEaxtJ4cXdEHXGNN83VPMSs0f0w1_rFCw&callback=initMap"></script>
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEaxtJ4cXdEHXGNN83VPMSs0f0w1_rFCw&callback=initMap"></script>
+
 </html>

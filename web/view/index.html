@@ -41,14 +41,14 @@
     <hr class="m-0 w-100 hr-seperate">
     <!-- test gallery -->
     <div class="d-flex justify-content-between gallery-size mx-auto">
-      \{for $i=1 to 5\} \{if $i % 3 == 1\}
+      \{for $i=1 to 5\} \{if $i % 5 == 1 || $i % 5 == 0\}
       <div class="my-auto d-flex flex-column">
         <div class="gallery-col-1" style="margin-top:0px;">
         </div>
         <div class="gallery-col-2">
         </div>
       </div>
-      \{elseif $i % 3 == 2\}
+      \{elseif $i % 3 == 2 || $i % 5 == 4\}
       <div class="my-auto d-flex flex-column">
         <div class="gallery-col-3" style="margin-top:0px;">
         </div>
