@@ -36,11 +36,6 @@ class Brand
      * 顯示首頁
      */
     public function view() {
-        // if ($_SESSION['isLogin'] == true) {
-        //     // member login
-        // } else { 
-        // }
-
         $this->smarty->assign('title', '品牌介紹');
         $this->smarty->display('brand.html');
     }
@@ -49,14 +44,33 @@ class Brand
      * 顯示品牌詳細資料
      */
     public function viewDetail() {
-        // if ($_SESSION['isLogin'] == true) {
-        //     // member login
-        // } else {
-            
-        // }
-
         $this->smarty->assign('title', '品牌介紹');
         $this->smarty->display('brand_detail.html');
+    }
+
+    /**
+     * SQL query
+     */
+    public function getSQLResult($sql = '')
+    {
+        // check $sql if is empty string
+        if (empty($sql)) {
+            return NULL;
+        } else {
+            $res = $this->db->prepare($sql);
+
+            if ($res->execute()) {
+                $data = $res->fetchAll();
+                $this->setResultMsg();
+
+                return $data;
+            } else {
+                $error = $res->errorInfo();
+                $this->setResultMsg('failure', $error[0]);
+
+                return NULL;
+            }
+        }
     }
 
     /**
