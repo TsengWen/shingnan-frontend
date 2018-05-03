@@ -681,25 +681,27 @@ footer {
 /* article class */
 
 #page{
-    margin: 0 auto;
-    /*max-width: 1050px;*/
+    max-width: 1050px;
     min-width: 60vw;
     min-height: 100px;
 
-    padding-top: 45px;
     float: none;
     clear: both;
     overflow: hidden;
     color: #fff;
+
     position: relative;
+    margin: 0 auto;
+    padding-top: 45px;
 }
 
 .post{
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 30px;
     float: left;
     clear: both;
-    margin-bottom: 30px;
+    
     background-color: #333333;
     padding: 20px;
     border: 1px solid #cdcdcd;
@@ -732,16 +734,17 @@ footer {
 
 .post-content
 {
-    margin-left: 270px;
     color: #fff;
+    overflow: hidden;
 }
 
 .readMore {
     float: right;
     margin-top: 20px;
+    margin-right: 20px;
 }
 .readMore a {
-    background-color: #EA141F;
+    background-color: #f5ac51;
     color: #fff;
     padding: 5px 12px;
     transition: all 0.25s linear;
@@ -749,6 +752,6 @@ footer {
 }
 .readMore a:hover {
     color: #fff;
-    background: #222222;
+    background: #EA141F;
 }
 
