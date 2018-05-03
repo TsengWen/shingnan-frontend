@@ -42,7 +42,7 @@ class News
                 FROM  `article`
                 LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
                 WHERE `article`.`type` = 2
-                ORDER BY `article`.`articleId`';
+                ORDER BY `article`.`createTime` DESC';
         $res = $this->db->prepare($sql);
         $res->execute();
         $allnewsData = $res->fetchAll();

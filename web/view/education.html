@@ -11,80 +11,28 @@
         \{include file="common/navigationbar.html"\}
         <!-- main-content -->
         <div id="page">
+            \{foreach from=$alleducationData item=article\}
             <article class="post">
                 <header>
                     <h2 class="title">
-                        <a href="#">Title</a>
+                        <a href="#">\{$article.title\}</a>
                     </h2>
                 </header>
                 <a href="#" id=featured-thumbnail>
                     <div class="featured-thumbnail">
-                        <img width="250" height="200" src="../img/03.jpg" alt="Img">
+                        <img width="250" height="200" src="http://140.116.82.48/shingnan/web/media/\{$article.path\}" alt="Img">
                     </div>
                 </a>
                 <div class="post-content">
-                    This website template has been designed by for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
+                    \{$article.preview\}
                 </div>
                 <div class="readMore">
                     <a href="#">繼續閱讀</a>
                 </div>
             </article>
-            <article class="post">
-                <header>
-                    <h2 class="title">
-                        <a href="#">Title</a>
-                    </h2>
-                </header>
-                <a href="#" id=featured-thumbnail>
-                    <div class="featured-thumbnail">
-                        <img width="250" height="200" src="../img/03.jpg" alt="Img">
-                    </div>
-                </a>
-                <div class="post-content">
-                    This website template has been designed by for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-                </div>
-                <div class="readMore">
-                    <a href="#">繼續閱讀</a>
-                </div>
-            </article>
-            <article class="post">
-                <header>
-                    <h2 class="title">
-                        <a href="#">Title</a>
-                    </h2>
-                </header>
-                <a href="#" id=featured-thumbnail>
-                    <div class="featured-thumbnail">
-                        <img width="250" height="200" src="../img/03.jpg" alt="Img">
-                    </div>
-                </a>
-                <div class="post-content">
-                    This website template has been designed by for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-                </div>
-                <div class="readMore">
-                    <a href="#">繼續閱讀</a>
-                </div>
-            </article>
-            <article class="post">
-                <header>
-                    <h2 class="title">
-                        <a href="#">Title</a>
-                    </h2>
-                </header>
-                <a href="#" id=featured-thumbnail>
-                    <div class="featured-thumbnail">
-                        <img width="250" height="200" src="../img/03.jpg" alt="Img">
-                    </div>
-                </a>
-                <div class="post-content">
-                    This website template has been designed by for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-                </div>
-                <div class="readMore">
-                    <a href="#">繼續閱讀</a>
-                </div>
-            </article>
+            \{/foreach\}
+            <!-- todo -->
         </div>
-        <!-- todo -->
     </div>
     <!-- footer -->
     \{include file="common/footer.html"\}

@@ -681,26 +681,22 @@ footer {
 /* article class */
 
 #page{
-    padding-top: 45px;
+    margin: 0 auto;
+    /*max-width: 1050px;*/
+    min-width: 60vw;
     min-height: 100px;
+
+    padding-top: 45px;
     float: none;
     clear: both;
     overflow: hidden;
-}
-#page, .container{
     color: #fff;
-    max-width: 1050px;
-    min-width: 240px;
-    margin: 0 auto;
     position: relative;
 }
 
-.article {
-    display: block;
-    margin-bottom: 30px;
-}
 .post{
     width: 100%;
+    margin: 0 auto;
     float: left;
     clear: both;
     margin-bottom: 30px;
@@ -708,6 +704,17 @@ footer {
     padding: 20px;
     border: 1px solid #cdcdcd;
 }
+
+.title{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    line-height: 28px;
+    clear: both;
+}
+.title a { color: #fff }
+
+
 .featured-thumbnail{
     max-width: 250px;
     float: left;
@@ -719,20 +726,19 @@ footer {
     float: left;
     max-width: 250px;
     width: 50%;
-    margin-right: 20px;
+    margin-right: 25px;
 }
 
-.title{
-    margin-top: 5px;
-    margin-bottom: 15px;
-    font-size: 24px;
-    line-height: 28px;
-    clear: both;
+
+.post-content
+{
+    margin-left: 270px;
+    color: #fff;
 }
-.title a { color: #fff }
+
 .readMore {
     float: right;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .readMore a {
     background-color: #EA141F;
@@ -746,15 +752,3 @@ footer {
     background: #222222;
 }
 
-a {
-    text-decoration: none;
-    color: #EA141F;
-    transition: background-color, color 0.2s linear;
-}
-a:hover { color: #EA141F }
-a:link, a:visited, a:active { text-decoration: none }
-
-*, *:before, *:after {
-    padding: 0;
-    margin: 0;
-}

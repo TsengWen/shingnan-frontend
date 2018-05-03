@@ -10,22 +10,27 @@
         <!-- navigationbar -->
         \{include file="common/navigationbar.html"\}
         <!-- main-content -->
-        <div class="album py-5">
-            <div class="container">
-                <div class="row">
-                    \{foreach from=$allnewsData item=article\}
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top img-thumbnail" style="height: 225px; width: 100%; display: block;">
-                            <div class="card-body">
-                                <h4 class="card-title">\{$article.title\}</h4>
-                                <p class="card-text">\{$article.ctr\}</p>
-                            </div>
-                        </div>
+        <div id="page">
+            \{foreach from=$allnewsData item=article\}
+            <article class="post">
+                <header>
+                    <h2 class="title">
+                        <a href="#">\{$article.title\}</a>
+                    </h2>
+                </header>
+                <a href="#" id=featured-thumbnail>
+                    <div class="featured-thumbnail">
+                        <img width="250" height="200" src="http://140.116.82.48/shingnan/web/media/\{$article.path\}" alt="Img">
                     </div>
-                    \{/foreach\}
+                </a>
+                <div class="post-content">
+                    \{$article.preview\}
                 </div>
-            </div>
+                <div class="readMore">
+                    <a href="#">繼續閱讀</a>
+                </div>
+            </article>
+            \{/foreach\}
         </div>
         <!-- todo -->
     </div>

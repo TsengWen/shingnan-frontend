@@ -34,10 +34,20 @@ class Education
     }
 
     /**
-     * 顯示首頁
+     * 顯示
      */
     public function view()
     {
+        $sql = 'SELECT `article`.`title`, `article`.`articleId` , `article`.`preview`, `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`path`
+                FROM  `article`
+                LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
+                WHERE `article`.`type` = 1
+                ORDER BY `article`.`createTime` DESC';
+        $res = $this->db->prepare($sql);
+        $res->execute();
+        $alleducationData = $res->fetchAll();
+
+        $this->smarty->assign('alleducationData', $alleducationData);
         $this->setResultMsg();
         $this->smarty->assign('title', '衛教文章');
         $this->smarty->display('education.html');
