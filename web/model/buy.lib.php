@@ -38,39 +38,20 @@ class Buy
      */
     public function view()
     {
-        if ($_SESSION['isLogin'] == true) {
-            // member login
-        } else {
-
-        }
-
-        $sql = "SELECT * FROM `brand`
+        $sql1 = "SELECT * FROM `brand`
                     WHERE `isDelete` = 0
                     ORDER BY `lastUpdateTime`
                     DESC LIMIT 0, 8";
-        $res = $this->db->prepare($sql);
+        $sql2 = "SELECT * FROM `style` WHERE `isDelete` = 0";
+        $brand_list = $this->getSQLResult($sql1);
+        $style_list = $this->getSQLResult($sql2);
 
-        if ($res->execute()) {
-            $brands = $res->fetchAll();
-
-            $this->setResultMsg();
-            $this->smarty->assign('brands', $brands);
-        } else {
-            $error = $res->errorInfo();
-            $this->setResultMsg('failure', $error[0]);
+        if (!is_null($brand_list)) {
+            $this->smarty->assign('brands', $brand_list);
         }
 
-        $sql = "SELECT * FROM `style` WHERE `isDelete` = 0";
-        $res = $this->db->prepare($sql);
-
-        if ($res->execute()) {
-            $styles = $res->fetchAll();
-
-            $this->setResultMsg();
-            $this->smarty->assign('styles', $styles);
-        } else {
-            $error = $res->errorInfo();
-            $this->setResultMsg('failure', $error[0]);
+        if (!is_null($style_list)) {
+            $this->smarty->assign('styles', $style_list);
         }
 
         $this->smarty->assign('title', '眼鏡選購');
@@ -82,11 +63,6 @@ class Buy
      */
     public function viewDetail()
     {
-        // if ($_SESSION['isLogin'] == true) {
-        //     // member login
-        // } else {
-        // }
-
         $this->smarty->assign('title', '眼鏡選購');
         $this->smarty->display('buy_detail.html');
     }
@@ -98,7 +74,7 @@ class Buy
     {
         // check $sql if is empty string
         if (empty($sql)) {
-            return null;
+            return NULL;
         } else {
             $res = $this->db->prepare($sql);
 
@@ -111,7 +87,7 @@ class Buy
                 $error = $res->errorInfo();
                 $this->setResultMsg('failure', $error[0]);
 
-                return null;
+                return NULL;
             }
         }
     }

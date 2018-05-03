@@ -43,24 +43,50 @@ class Index
         // } else {
             
         // }
-        $sql = "SELECT * FROM `image` WHERE `itemId` like 'index_%'";
-        $res = $this->db->prepare($sql);
+        $sql1 = "SELECT * FROM `image` WHERE `itemId` like 'index_%'";
+        $sql2 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $img_list = $this->getSQLResult($sql1);   
+        $store_list = $this->getSQLResult($sql2);
 
-        if ($res->execute()) {
-            $rows = $res->fetchAll();
+        if (!is_null($img_list)) {
             $images = array();
-            foreach ($rows as $img) {
+            foreach ($img_list as $img) {
                 $images[$img['imageName']] = 'http://140.116.82.48/shingnan/web/controller/' . $img['path'];
             }
-            $this->setResultMsg();
-            $this->smarty->assign('images', $images);
-        } else {
-            $error = $res->errorInfo();
-            $this->setResultMsg('failure', $error[0]);
+            $this->smarty->assign('images', $images);        
+        }
+
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list); 
         }
 
         $this->smarty->assign('title', '興南眼鏡行');
         $this->smarty->display('index.html');
+    }
+
+    /**
+     * SQL query
+     */
+    public function getSQLResult($sql = '')
+    {
+        // check $sql if is empty string
+        if (empty($sql)) {
+            return NULL;
+        } else {
+            $res = $this->db->prepare($sql);
+
+            if ($res->execute()) {
+                $data = $res->fetchAll();
+                $this->setResultMsg();
+
+                return $data;
+            } else {
+                $error = $res->errorInfo();
+                $this->setResultMsg('failure', $error[0]);
+
+                return NULL;
+            }
+        }
     }
 
     /**
