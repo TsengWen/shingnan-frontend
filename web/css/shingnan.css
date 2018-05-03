@@ -678,46 +678,7 @@ footer {
     }
 }
 
-/*  關於我們 */
-.about {
-    width: 1050px;
-    min-width: 240px;
-    list-style: none;
-    margin: 0;
-    padding: 30px 30px 0 0;
-}
-
-.about li {
-    height: 144px;
-    margin-bottom: 100px;
-}
-
-.about li span.left {
-    display: inline-block;
-    margin-right: 20px;
-    padding-bottom: 4px;
- *padding-bottom: 9px;/** Needed for IE7 **/
-}
-.about li span.right {
-    display: inline-block;
-    margin-left: 20px;
-    padding-bottom: 4px;
- *padding-bottom: 9px;/** Needed for IE7 **/
-}
-
-.about li img {
-    background-color: #fff;
-    padding: 3px;
-}
-
-.about li p {
-    font-size: 12px;
-    line-height: 20px;
-    margin: 0;
-    padding: 0 0 20px;
-    text-align: justify;
-    
-}
+/* article class */
 
 #page{
     padding-top: 45px;
@@ -727,6 +688,7 @@ footer {
     overflow: hidden;
 }
 #page, .container{
+    color: #fff;
     max-width: 1050px;
     min-width: 240px;
     margin: 0 auto;
@@ -742,7 +704,7 @@ footer {
     float: left;
     clear: both;
     margin-bottom: 30px;
-    background-color: #fff;
+    background-color: #333333;
     padding: 20px;
     border: 1px solid #cdcdcd;
 }
@@ -767,7 +729,7 @@ footer {
     line-height: 28px;
     clear: both;
 }
-.title a { color: #000 }
+.title a { color: #fff }
 .readMore {
     float: right;
     margin-top: 15px;

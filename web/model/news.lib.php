@@ -38,10 +38,10 @@ class News
      */
     public function view()
     {
-        $sql = 'SELECT `article`.`title`, `article`.`articleId` , `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`
-                , `article`.`createTime`
+        $sql = 'SELECT `article`.`title`, `article`.`articleId` , `article`.`preview`, `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`path`
                 FROM  `article`
-                WHERE type = 1
+                LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
+                WHERE `article`.`type` = 2
                 ORDER BY `article`.`articleId`';
         $res = $this->db->prepare($sql);
         $res->execute();
