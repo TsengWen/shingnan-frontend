@@ -10,38 +10,100 @@
         <!-- navigationbar -->
         \{include file="common/navigationbar.html"\}
         <!-- main-content -->
-        <ul class="about">
-            <li>
-                <span class="left"><img width="250" height="200" src="../img/03.jpg" alt="Img"></span>
-                <p>
-                    This website template has been designed by for you, for free. You can replace all this text with your own text.&nbsp;You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-                </p>
-            </li>
-            <li>
-                <span class="right"><img width="250" height="200" src="../img/03.jpg" alt="Img"></span>
-                <p>
-                    This website template has been designed by for you, for free. You can replace all this text with your own text.&nbsp;You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-                </p>
-            </li>
-            <li>
-                <span class="left"><img width="250" height="200" src="../img/03.jpg" alt="Img"></span>
-                <p>
-                    This website template has been designed by for you, for free. You can replace all this text with your own text.&nbsp;You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-                </p>
-            </li>
-            <li>
-                <span class="right"><img width="250" height="200" src="../img/03.jpg" alt="Img"></span>
-                <p>
-                    This website template has been designed by for you, for free. You can replace all this text with your own text.&nbsp;You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-                </p>
-            </li>
-            <li>
-                <span class="left"><img width="250" height="200" src="../img/03.jpg" alt="Img"></span>
-                <p>
-                    This website template has been designed by for you, for free. You can replace all this text with your own text.&nbsp;You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-                </p>
-            </li>
-        </ul>
+        <div id="page">
+            \{foreach from=$allaboutData item=article\}
+            <article class="post">
+                <header>
+                    <h2 class="title">
+                        <a href="#">\{$article.title\}</a>
+                    </h2>
+                </header>
+                <a href="#" id=featured-thumbnail>
+                    <div class="featured-thumbnail">
+                        <img width="250" height="200" src="http://140.116.82.48/shingnan/web/media/\{$article.path\}" alt="Img">
+                    </div>
+                </a>
+                <div class="post-content">
+                    \{$article.preview\}
+                </div>
+                <div class="readMore">
+                    <a href="#">繼續閱讀</a>
+                </div>
+            </article>
+            \{/foreach\}
+            <article class="post">
+                <header>
+                    <h2 class="title">
+                        <a href="#">Title</a>
+                    </h2>
+                </header>
+                <a href="#" id=featured-thumbnail>
+                    <div class="featured-thumbnail">
+                        <img width="250" height="200" src="../img/03.jpg" alt="Img">
+                    </div>
+                </a>
+                <div class="post-content">
+                    This website template has been designed by for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
+                </div>
+                <div class="readMore">
+                    <a href="#">繼續閱讀</a>
+                </div>
+            </article>
+            <article class="post">
+                <header>
+                    <h2 class="title">
+                        <a href="#">Title</a>
+                    </h2>
+                </header>
+                <a href="#" id=featured-thumbnail>
+                    <div class="featured-thumbnail">
+                        <img width="250" height="200" src="../img/03.jpg" alt="Img">
+                    </div>
+                </a>
+                <div class="post-content">
+                    This website template has been designed by for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
+                </div>
+                <div class="readMore">
+                    <a href="#">繼續閱讀</a>
+                </div>
+            </article>
+            <article class="post">
+                <header>
+                    <h2 class="title">
+                        <a href="#">Title</a>
+                    </h2>
+                </header>
+                <a href="#" id=featured-thumbnail>
+                    <div class="featured-thumbnail">
+                        <img width="250" height="200" src="../img/03.jpg" alt="Img">
+                    </div>
+                </a>
+                <div class="post-content">
+                    This website template has been designed by for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
+                </div>
+                <div class="readMore">
+                    <a href="#">繼續閱讀</a>
+                </div>
+            </article>
+            <article class="post">
+                <header>
+                    <h2 class="title">
+                        <a href="#">Title</a>
+                    </h2>
+                </header>
+                <a href="#" id=featured-thumbnail>
+                    <div class="featured-thumbnail">
+                        <img width="250" height="200" src="../img/03.jpg" alt="Img">
+                    </div>
+                </a>
+                <div class="post-content">
+                    This website template has been designed by for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
+                </div>
+                <div class="readMore">
+                    <a href="#">繼續閱讀</a>
+                </div>
+            </article>
+        </div>
         <!-- todo -->
     </div>
     <!-- footer -->

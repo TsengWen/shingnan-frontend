@@ -38,6 +38,18 @@ class About
      */
     public function view()
     {
+        $sql = 'SELECT `article`.`title`, `article`.`preview` , `article`.`articleId` , `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`
+                , `article`.`createTime`,`image`.`imageId`,`image`.`path`
+                FROM  `article`
+                LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
+                WHERE `article`.`type` = 3
+                ORDER BY `article`.`articleId`';
+        $res = $this->db->prepare($sql);
+        $res->execute();
+        $allaboutData = $res->fetchAll();
+
+        $this->smarty->assign('allaboutData', $allaboutData);
+
         $this->setResultMsg();
         $this->smarty->assign('title', '關於我們');
         $this->smarty->display('about.html');
