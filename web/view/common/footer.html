@@ -1,8 +1,7 @@
-<footer class="bg-yellow pb-3 pt-5">
-    <div class="d-flex justify-content-around align-items-center bg-gray2 py-3">
-        <img src="../img/logo_2.png" style="height: 90px;">
-        \{foreach from=$stores item=store \}
-            <div style="color: #ffffff; font-size: 16px;">【\{$store['storeName']\}】
+<footer class="pb-3 pt-5">
+    <div class="d-flex justify-content-around align-items-center py-3">
+        <img src="../img/logo_2.png" style="height: 90px;"> \{foreach from=$stores item=store \}
+        <div style="color: #ffffff; font-size: 16px;">【\{$store['storeName']\}】
             <br>地址: \{$store['address']\}
             <br>TEL: \{$store['phoneNumber']\}</div>
         \{/foreach\}
