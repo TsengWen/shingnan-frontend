@@ -38,20 +38,34 @@ class Buy
      */
     public function view()
     {
-        $sql1 = "SELECT * FROM `brand`
-                    WHERE `isDelete` = 0
-                    ORDER BY `lastUpdateTime`
-                    DESC LIMIT 0, 8";
+        $sql1 = "SELECT `path` FROM `image`,
+                (SELECT `brandId` FROM `brand`
+                 WHERE `isDelete` = 0
+                 ORDER BY `lastUpdateTime`
+                 DESC LIMIT 0, 8) as b
+                 WHERE `itemId` = b.`brandId`";
         $sql2 = "SELECT * FROM `style` WHERE `isDelete` = 0";
+        $sql3 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        
+
         $brand_list = $this->getSQLResult($sql1);
         $style_list = $this->getSQLResult($sql2);
+        $store_list = $this->getSQLResult($sql3);
 
         if (!is_null($brand_list)) {
-            $this->smarty->assign('brands', $brand_list);
+            $brand_imgs = array();
+            foreach ($brand_list as $img) {
+                $brand_imgs[] = 'http://140.116.82.48/shingnan/web/controller/' . $img['path'];
+            }
+            $this->smarty->assign('brand_imgs', $brand_imgs);
         }
 
         if (!is_null($style_list)) {
             $this->smarty->assign('styles', $style_list);
+        }
+
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list); 
         }
 
         $this->smarty->assign('title', '眼鏡選購');
@@ -63,6 +77,13 @@ class Buy
      */
     public function viewDetail()
     {
+        $sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $store_list = $this->getSQLResult($sql);
+
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list); 
+        }
+
         $this->smarty->assign('title', '眼鏡選購');
         $this->smarty->display('buy_detail.html');
     }

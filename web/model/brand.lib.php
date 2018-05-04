@@ -36,6 +36,13 @@ class Brand
      * 顯示首頁
      */
     public function view() {
+        $sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $store_list = $this->getSQLResult($sql);
+
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list); 
+        }
+
         $this->smarty->assign('title', '品牌介紹');
         $this->smarty->display('brand.html');
     }
@@ -44,6 +51,13 @@ class Brand
      * 顯示品牌詳細資料
      */
     public function viewDetail() {
+        $sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $store_list = $this->getSQLResult($sql);
+
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list); 
+        }
+        
         $this->smarty->assign('title', '品牌介紹');
         $this->smarty->display('brand_detail.html');
     }
