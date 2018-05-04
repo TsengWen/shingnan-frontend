@@ -38,20 +38,51 @@ class News
      */
     public function view()
     {
-        $sql = 'SELECT `article`.`title`, `article`.`articleId` , `article`.`preview`, `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`path`
+        $sql1 = 'SELECT `article`.`title`, `article`.`articleId` , `article`.`preview`, `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`path`
                 FROM  `article`
                 LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
                 WHERE `article`.`type` = 2
                 ORDER BY `article`.`createTime` DESC';
-        $res = $this->db->prepare($sql);
-        $res->execute();
-        $allnewsData = $res->fetchAll();
+        $sql2 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
 
-        $this->smarty->assign('allnewsData', $allnewsData);
-        $this->setResultMsg();
+        $allnewsData = $this->getSQLResult($sql1);
+        $store_list = $this->getSQLResult($sql2);
+
+        if (!is_null($allnewsData)) {
+            $this->smarty->assign('allnewsData', $allnewsData);
+        }
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list);
+        }
+
         $this->smarty->assign('title', '最新消息');
         $this->smarty->display('news.html');
 
+    }
+
+    /**
+     * SQL query
+     */
+    public function getSQLResult($sql = '')
+    {
+        // check $sql if is empty string
+        if (empty($sql)) {
+            return null;
+        } else {
+            $res = $this->db->prepare($sql);
+
+            if ($res->execute()) {
+                $data = $res->fetchAll();
+                $this->setResultMsg();
+
+                return $data;
+            } else {
+                $error = $res->errorInfo();
+                $this->setResultMsg('failure', $error[0]);
+
+                return null;
+            }
+        }
     }
 
     /**

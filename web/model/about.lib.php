@@ -38,21 +38,51 @@ class About
      */
     public function view()
     {
-        $sql = 'SELECT `article`.`title`, `article`.`preview` , `article`.`articleId` , `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`imageId`,`image`.`path`
+        $sql1 = 'SELECT `article`.`title`, `article`.`preview` , `article`.`articleId` , `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`imageId`,`image`.`path`
                 FROM  `article`
                 LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
                 WHERE `article`.`type` = 3
                 ORDER BY `article`.`createTime` DESC';
-        $res = $this->db->prepare($sql);
-        $res->execute();
-        $allaboutData = $res->fetchAll();
+        $sql2 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
 
-        $this->smarty->assign('allaboutData', $allaboutData);
+        $allaboutData = $this->getSQLResult($sql1);
+        $store_list = $this->getSQLResult($sql2);
 
-        $this->setResultMsg();
+        if (!is_null($allaboutData)) {
+            $this->smarty->assign('allaboutData', $allaboutData);
+        }
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list);
+        }
+
         $this->smarty->assign('title', '關於我們');
         $this->smarty->display('about.html');
 
+    }
+
+    /**
+     * SQL query
+     */
+    public function getSQLResult($sql = '')
+    {
+        // check $sql if is empty string
+        if (empty($sql)) {
+            return null;
+        } else {
+            $res = $this->db->prepare($sql);
+
+            if ($res->execute()) {
+                $data = $res->fetchAll();
+                $this->setResultMsg();
+
+                return $data;
+            } else {
+                $error = $res->errorInfo();
+                $this->setResultMsg('failure', $error[0]);
+
+                return null;
+            }
+        }
     }
 
     /**
