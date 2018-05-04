@@ -4,7 +4,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-/* line 76, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 
 body {
     min-height: 100vh;
@@ -12,76 +12,125 @@ body {
     font-size: 16px;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 
-/* line 84, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 
 footer {
     width: 100%;
     background-color: #f5ac51;
 }
 
-/* line 87, ../sass/screen.scss */
+/* line 82, ../sass/screen.scss */
 
 footer div {
     background-color: #333333;
 }
 
-/* line 92, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 
 nav {
     background-color: #333333;
 }
 
-/* line 97, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 
 .hr-1,
 .hr-2 {
     border: 1px solid #ffffff;
 }
 
-/* line 101, ../sass/screen.scss */
+/* line 96, ../sass/screen.scss */
 
 .hr-2 {
     border-color: #333333;
     padding-top: 50px;
 }
 
-/* line 108, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 
 .dark-theme {
     background-color: #333333;
     color: #ffffff;
 }
 
-/* line 113, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 
 .index-content,
 .content {
     flex: 1;
 }
 
-/* line 117, ../sass/screen.scss */
+/* line 112, ../sass/screen.scss */
 
 .content {
     margin-top: 61px;
 }
 
-/* line 123, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 
 .brand-col-1 {
     background-color: #59524a;
     height: 383px;
 }
 
-/* line 128, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 
 .brand-col-2 {
     background-color: #333333;
     height: 383px;
 }
 
-/* line 134, ../sass/screen.scss */
+/* line 128, ../sass/screen.scss */
+
+.brand-glasses {
+    background-color: #d3bbc5;
+}
+
+/* line 133, ../sass/screen.scss */
+
+.right-arrow {
+    -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    -moz-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    -ms-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+}
+
+/* line 137, ../sass/screen.scss */
+
+.left-arrow {
+    -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+    -moz-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+    -ms-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+    clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+}
+
+/* line 142, ../sass/screen.scss */
+
+.glasses-class-bar {
+    width: 35%;
+    height: 40px;
+    background-color: #eeeeee;
+    text-align: right;
+    font-size: 20px;
+    color: #000000;
+    padding: 5px 10px;
+}
+
+/* line 152, ../sass/screen.scss */
+
+.bg-light-white {
+    background-color: #eeeeee;
+}
+
+/* line 156, ../sass/screen.scss */
+
+.glasses-cell {
+    border: 1px solid #ffffff;
+}
+
+/* line 161, ../sass/screen.scss */
 
 #page {
     max-width: 1050px;
@@ -96,7 +145,7 @@ nav {
     padding-top: 45px;
 }
 
-/* line 145, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 
 #page .post {
     width: 100%;
@@ -108,7 +157,7 @@ nav {
     border: 1px solid #cdcdcd;
 }
 
-/* line 153, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 
 #page .post .title {
     margin-top: 5px;
@@ -118,13 +167,13 @@ nav {
     clear: both;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 
 #page .post .title a {
     color: #ffffff;
 }
 
-/* line 163, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 
 #page .post .featured-thumbnail {
     max-width: 250px;
@@ -134,7 +183,7 @@ nav {
     margin-top: 5px;
 }
 
-/* line 170, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 
 #page .post #featured-thumbnail {
     float: left;
@@ -143,14 +192,14 @@ nav {
     margin-right: 25px;
 }
 
-/* line 176, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 
 #page .post .post-content {
     color: #ffffff;
     overflow: hidden;
 }
 
-/* line 180, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 
 #page .post .readMore {
     float: right;
@@ -158,7 +207,7 @@ nav {
     margin-right: 20px;
 }
 
-/* line 184, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 
 #page .post .readMore a {
     background-color: #f5ac51;
@@ -168,14 +217,14 @@ nav {
     font-family: sans-serif, "Monda";
 }
 
-/* line 190, ../sass/screen.scss */
+/* line 217, ../sass/screen.scss */
 
 #page .post .readMore a:hover {
     color: #ffffff;
     background: #ea141f;
 }
 
-/* line 200, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 
 .trapezoidal .trapezoidal-1,
 .trapezoidal .trapezoidal-2,
@@ -186,19 +235,19 @@ nav {
     width: 602px;
 }
 
-/* line 207, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 
 .trapezoidal {
     height: 1000px;
 }
 
-/* line 209, ../sass/screen.scss */
+/* line 236, ../sass/screen.scss */
 
 .trapezoidal .trapezoidal-1 {
     float: left;
 }
 
-/* line 212, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 
 .trapezoidal .trapezoidal-1 .img-1 {
     width: 100%;
@@ -209,7 +258,7 @@ nav {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 26%);
 }
 
-/* line 217, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 
 .trapezoidal .trapezoidal-1 .img-2 {
     width: 100%;
@@ -221,13 +270,13 @@ nav {
     clip-path: polygon(0% 0%, 100% 74%, 100% 100%, 0% 100%);
 }
 
-/* line 224, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 
 .trapezoidal .trapezoidal-2 {
     float: right;
 }
 
-/* line 227, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 
 .trapezoidal .trapezoidal-2 .img-1 {
     width: 100%;
@@ -238,7 +287,7 @@ nav {
     clip-path: polygon(0% 0%, 100% 0%, 100% 26%, 0% 100%);
 }
 
-/* line 232, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 
 .trapezoidal .trapezoidal-2 .img-2 {
     width: 100%;
@@ -250,34 +299,34 @@ nav {
     clip-path: polygon(0% 74%, 100% 0%, 100% 100%, 0% 100%);
 }
 
-/* line 241, ../sass/screen.scss */
+/* line 268, ../sass/screen.scss */
 
 .trapezoidal .trapezoidal-3 img {
     height: 100%;
     width: 100%;
 }
 
-/* line 250, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 
 .navbar-light .navbar-toggler {
     color: rgba(255, 255, 255, 0.6);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* line 254, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
 
 .navbar-light .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.6)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-/* line 260, ../sass/screen.scss */
+/* line 287, ../sass/screen.scss */
 
 .nav-link-text {
     height: 37px;
     overflow: hidden;
 }
 
-/* line 263, ../sass/screen.scss */
+/* line 290, ../sass/screen.scss */
 
 .nav-link-text span {
     color: #ffffff;
@@ -287,7 +336,7 @@ nav {
     display: block;
 }
 
-/* line 270, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 
 .nav-link-text .nav-span {
     margin-top: -30px;
@@ -295,7 +344,7 @@ nav {
     transition: 0.3s;
 }
 
-/* line 276, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 
 .nav-link-text:hover .nav-span {
     margin-top: 0px;
@@ -303,7 +352,7 @@ nav {
 
 /* 首頁圖片輪播片 */
 
-/* line 284, ../sass/screen.scss */
+/* line 311, ../sass/screen.scss */
 
 .carousel-item {
     height: 100vh;
@@ -315,7 +364,7 @@ nav {
     background-size: cover;
 }
 
-/* line 291, ../sass/screen.scss */
+/* line 318, ../sass/screen.scss */
 
 .carousel-circle {
     max-width: 10px !important;
@@ -326,13 +375,13 @@ nav {
     background-color: #f5ac51 !important;
 }
 
-/* line 300, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 
 .carousel-indicators .active {
     background-color: #ffff99 !important;
 }
 
-/* line 305, ../sass/screen.scss */
+/* line 332, ../sass/screen.scss */
 
 #go-top-btn {
     display: none;
@@ -355,20 +404,20 @@ nav {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
-/* line 323, ../sass/screen.scss */
+/* line 350, ../sass/screen.scss */
 
 #go-top-btn:hover {
     background: #ea141f;
 }
 
-/* line 329, ../sass/screen.scss */
+/* line 356, ../sass/screen.scss */
 
 .gallery {
     height: 1900px;
     width: 95%;
 }
 
-/* line 334, ../sass/screen.scss */
+/* line 361, ../sass/screen.scss */
 
 .gallery-col-1 {
     height: 475px;
@@ -377,7 +426,7 @@ nav {
     background-color: #59524a;
 }
 
-/* line 341, ../sass/screen.scss */
+/* line 368, ../sass/screen.scss */
 
 .gallery-col-2 {
     height: 460px;
@@ -386,7 +435,7 @@ nav {
     background-color: #59524a;
 }
 
-/* line 348, ../sass/screen.scss */
+/* line 375, ../sass/screen.scss */
 
 .gallery-col-3 {
     height: 400px;
@@ -395,7 +444,7 @@ nav {
     background-color: #59524a;
 }
 
-/* line 355, ../sass/screen.scss */
+/* line 382, ../sass/screen.scss */
 
 .gallery-col-4 {
     height: 240px;
@@ -405,70 +454,70 @@ nav {
 }
 
 @media only screen and (max-width: 960px) {
-    /* line 364, ../sass/screen.scss */
+    /* line 391, ../sass/screen.scss */
     .gallery {
         height: 950px;
         width: 47.5%;
     }
-    /* line 368, ../sass/screen.scss */
+    /* line 395, ../sass/screen.scss */
     .gallery-col-1 {
         height: 237.5px;
         width: 100px;
         margin-top: 160px;
     }
-    /* line 373, ../sass/screen.scss */
+    /* line 400, ../sass/screen.scss */
     .gallery-col-2 {
         height: 230px;
         width: 100px;
         margin-top: 160px;
     }
-    /* line 378, ../sass/screen.scss */
+    /* line 405, ../sass/screen.scss */
     .gallery-col-3 {
         height: 200px;
         width: 130px;
         margin-top: 10px;
     }
-    /* line 383, ../sass/screen.scss */
+    /* line 410, ../sass/screen.scss */
     .gallery-col-4 {
         height: 120px;
         width: 125px;
         margin-top: 30px;
     }
-    /* line 388, ../sass/screen.scss */
+    /* line 415, ../sass/screen.scss */
     .trapezoidal {
         height: 400px;
     }
-    /* line 390, ../sass/screen.scss */
+    /* line 417, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 {
         width: 240.8px;
     }
-    /* line 392, ../sass/screen.scss */
+    /* line 419, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 .img-1 {
         height: 317.6px;
     }
-    /* line 395, ../sass/screen.scss */
+    /* line 422, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 .img-2 {
         height: 317.6px;
         margin-top: -240.8px;
     }
-    /* line 400, ../sass/screen.scss */
+    /* line 427, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 {
         width: 240.8px;
     }
-    /* line 402, ../sass/screen.scss */
+    /* line 429, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 .img-1 {
         height: 317.6px;
     }
-    /* line 405, ../sass/screen.scss */
+    /* line 432, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 .img-2 {
         height: 317.6px;
         margin-top: -240.8px;
     }
-    /* line 410, ../sass/screen.scss */
+    /* line 437, ../sass/screen.scss */
     .trapezoidal .trapezoidal-3 {
         width: 240.8px;
     }
-    /* line 412, ../sass/screen.scss */
+    /* line 439, ../sass/screen.scss */
     .trapezoidal .trapezoidal-3 img {
         height: 40%;
         width: 40%;
@@ -476,70 +525,70 @@ nav {
 }
 
 @media only screen and (max-width: 760px) {
-    /* line 422, ../sass/screen.scss */
+    /* line 449, ../sass/screen.scss */
     .gallery {
         height: 475px;
         width: 23.75%;
     }
-    /* line 426, ../sass/screen.scss */
+    /* line 453, ../sass/screen.scss */
     .gallery-col-1 {
         height: 118.75px;
         width: 50px;
         margin-top: 80px;
     }
-    /* line 431, ../sass/screen.scss */
+    /* line 458, ../sass/screen.scss */
     .gallery-col-2 {
         height: 115px;
         width: 50px;
         margin-top: 80px;
     }
-    /* line 436, ../sass/screen.scss */
+    /* line 463, ../sass/screen.scss */
     .gallery-col-3 {
         height: 100px;
         width: 65px;
         margin-top: 5px;
     }
-    /* line 441, ../sass/screen.scss */
+    /* line 468, ../sass/screen.scss */
     .gallery-col-4 {
         height: 60px;
         width: 62.5px;
         margin-top: 15px;
     }
-    /* line 446, ../sass/screen.scss */
+    /* line 473, ../sass/screen.scss */
     .trapezoidal {
         height: 200px;
     }
-    /* line 448, ../sass/screen.scss */
+    /* line 475, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 {
         width: 120.4px;
     }
-    /* line 450, ../sass/screen.scss */
+    /* line 477, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 .img-1 {
         height: 158.8px;
     }
-    /* line 453, ../sass/screen.scss */
+    /* line 480, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 .img-2 {
         height: 158.8px;
         margin-top: -120.4px;
     }
-    /* line 458, ../sass/screen.scss */
+    /* line 485, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 {
         width: 120.4px;
     }
-    /* line 460, ../sass/screen.scss */
+    /* line 487, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 .img-1 {
         height: 158.8px;
     }
-    /* line 463, ../sass/screen.scss */
+    /* line 490, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 .img-2 {
         height: 158.8px;
         margin-top: -120.4px;
     }
-    /* line 468, ../sass/screen.scss */
+    /* line 495, ../sass/screen.scss */
     .trapezoidal .trapezoidal-3 {
         width: 120.4px;
     }
-    /* line 470, ../sass/screen.scss */
+    /* line 497, ../sass/screen.scss */
     .trapezoidal .trapezoidal-3 img {
         height: 20%;
         width: 20%;
@@ -547,70 +596,70 @@ nav {
 }
 
 @media only screen and (max-width: 480px) {
-    /* line 480, ../sass/screen.scss */
+    /* line 507, ../sass/screen.scss */
     .gallery {
         height: 247px;
         width: 12.35%;
     }
-    /* line 484, ../sass/screen.scss */
+    /* line 511, ../sass/screen.scss */
     .gallery-col-1 {
         height: 61.75px;
         width: 26px;
         margin-top: 41.6px;
     }
-    /* line 489, ../sass/screen.scss */
+    /* line 516, ../sass/screen.scss */
     .gallery-col-2 {
         height: 59.8px;
         width: 26px;
         margin-top: 41.6px;
     }
-    /* line 494, ../sass/screen.scss */
+    /* line 521, ../sass/screen.scss */
     .gallery-col-3 {
         height: 52px;
         width: 33.8px;
         margin-top: 2.6px;
     }
-    /* line 499, ../sass/screen.scss */
+    /* line 526, ../sass/screen.scss */
     .gallery-col-4 {
         height: 31.2px;
         width: 32.5px;
         margin-top: 7.8px;
     }
-    /* line 504, ../sass/screen.scss */
+    /* line 531, ../sass/screen.scss */
     .trapezoidal {
         height: 100px;
     }
-    /* line 506, ../sass/screen.scss */
+    /* line 533, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 {
         width: 60.2px;
     }
-    /* line 508, ../sass/screen.scss */
+    /* line 535, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 .img-1 {
         height: 79.4px;
     }
-    /* line 511, ../sass/screen.scss */
+    /* line 538, ../sass/screen.scss */
     .trapezoidal .trapezoidal-1 .img-2 {
         height: 79.4px;
         margin-top: -60.2px;
     }
-    /* line 516, ../sass/screen.scss */
+    /* line 543, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 {
         width: 60.2px;
     }
-    /* line 518, ../sass/screen.scss */
+    /* line 545, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 .img-1 {
         height: 79.4px;
     }
-    /* line 521, ../sass/screen.scss */
+    /* line 548, ../sass/screen.scss */
     .trapezoidal .trapezoidal-2 .img-2 {
         height: 79.4px;
         margin-top: -60.2px;
     }
-    /* line 526, ../sass/screen.scss */
+    /* line 553, ../sass/screen.scss */
     .trapezoidal .trapezoidal-3 {
         width: 60.2px;
     }
-    /* line 528, ../sass/screen.scss */
+    /* line 555, ../sass/screen.scss */
     .trapezoidal .trapezoidal-3 img {
         height: 10%;
         width: 10%;

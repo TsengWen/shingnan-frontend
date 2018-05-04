@@ -10,29 +10,30 @@
         <!-- navigationbar -->
         \{include file="common/navigationbar.html"\}
         <!-- main-content -->
-        <img class="img-fluid p-5" src="../img/cover.png" alt="Big img">
+        <img class="img-fluid p-5" src="http://placehold.it/1920x720" alt="Big img">
         <!-- brand logo -->
-        <div class="row p-5 d-flex justify-content-between">
+        <div class="row p-5">
             \{for $i=1 to 24\}
             <div class="col-md-3 col-sm-6 col-xm-12 py-2">
                 <a href="brandController.php?action=viewDetail">
-                    <img class="bg-gray img-fluid w-100" style="height: 80px;">
+                    <img class="img-fluid w-100" src="http://placehold.it/240x80">
                 </a>
             </div>
             \{/for\}
-
         </div>
         <!-- glasses of brand -->
-        <div class="bg-darkpink w-100 p-4">
+        <div class="brand-glasses w-100 p-4">
             <div class="row d-flex justify-content-between">
                 \{for $i=1 to 8\}
                 <div class="col-md-3 col-sm-6 col-xm-12 p-3">
-                    <img class="img-fluid" src="../img/03.jpg">
+                    <img class="img-fluid" src="http://placehold.it/400x320">
                 </div>
                 \{/for\}
                 <div class="w-100"></div>
                 <div class="col py-4 text-right">
-                    <a class="btn btn-secondary border-dark" href="buyController.php?action=view">MORE ></a>
+                    <a class="btn-lg btn-secondary border-dark right-arrow" href="buyController.php?action=view">
+                        <span class="mr-3">MORE</span>
+                    </a>
                 </div>
             </div>
         </div>
