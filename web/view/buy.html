@@ -10,33 +10,33 @@
         <!-- navigationbar -->
         \{include file="common/navigationbar.html"\}
         <!-- main-content -->
-        <img class="img-fluid p-5" src="../img/cover.png" alt="Big img">
-        <div class="buy-class">選品牌</div>
-        <div class="row mx-auto mb-3" style="width: 70%;">
+        <img class="img-fluid p-5" src="http://placehold.it/1920x720" alt="Big img">
+        <div class="glasses-class-bar">選品牌</div>
+        <div class="row mx-auto my-5" style="width: 70%;">
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brands[0])\}\{$brands[0].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand_imgs[0])\}\{$brand_imgs[0].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brands[1])\}\{$brands[1].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand_imgs[1])\}\{$brand_imgs[1].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brands[2])\}\{$brands[2].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand_imgs[2])\}\{$brand_imgs[2].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brands[3])\}\{$brands[3].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand_imgs[3])\}\{$brand_imgs[3].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
             <div class="w-100"></div>
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brands[4])\}\{$brands[4].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand_imgs[4])\}\{$brand_imgs[4].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brands[5])\}\{$brands[5].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand_imgs[5])\}\{$brand_imgs[5].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brands[6])\}\{$brands[6].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand_imgs[6])\}\{$brand_imgs[6].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brands[7])\}\{$brands[7].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand_imgs[7])\}\{$brand_imgs[7].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
             <div class="w-100"></div>
             <div class="col text-right p-1">
@@ -45,11 +45,12 @@
             </div>
         </div>
         \{foreach from=$styles item=style\}
-        <div class="buy-class">\{$style.styleName\}</div>
-        <div class="row mx-auto mb-3" style="width: 70%;">
+        <div class="glasses-class-bar">\{$style.styleName\}</div>
+        <div class="row mx-auto my-5" style="width: 70%;">
             \{foreach from=$frame item=img name=frameImg\}
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($img)\}\{$img\}\{else\}../img/01.jpg\{/if\}" onError="this.src = '../img/01.jpg'" style="width: 100%;">
+                <!-- <img class="rounded" src="\{if isset($img)\}\{$img\}\{else\}../img/01.jpg\{/if\}" onError="this.src = '../img/01.jpg'" style="width: 100%;"> -->
+                <img class="rounded" src="http://placehold.it/300x300" style="width: 100%;">
             </div>
             \{if $img@index eq 7\} \{break\} \{/if\} \{/foreach\} \{if count($frame) > 8\}
             <div class="col text-right p-1">
