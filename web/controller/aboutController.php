@@ -9,11 +9,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET':
-        $action = isset($_GET['action']) ? $_GET['action'] : 'view';
+        $action = isset($_GET['action']) ? $_GET['action'] : '';
         switch ($action) {
             case 'view':
             default:
-                $about->view();
+                $about->view($_GET);
         }
         break;
 }
