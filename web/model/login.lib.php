@@ -31,8 +31,32 @@ class Login
             session_register('error');
             session_register('msg');
         }
+
+        $this->getStoreList();
     }
 
+    /**
+     * 取得店舖資料
+     */
+    private function getStoreList()
+    {
+        $sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $store_list = NULL;
+        $res = $this->db->prepare($sql);
+
+        if ($res->execute()) {
+            $store_list = $res->fetchAll();
+            $this->setResultMsg();
+        } else {
+            $error = $res->errorInfo();
+            $this->setResultMsg('failure', $error[0]);
+        }
+
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list); 
+        }
+    }
+    
     public function isValidInput($input)
     {
         $input['account'] = trim($input['account']);
