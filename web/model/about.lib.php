@@ -98,33 +98,33 @@ class About
         $class = ($this->page == 1) ? "disabled" : "";
 
         $previous_page = ($this->page == 1) ?
-        '<li class="page-item ' . $class . '"><a class="page-link" href="">&laquo;</a></li>' : //remove link from previous button
-        '<li class="page-item ' . $class . '"><a class="page-link" href="?action=view&page=' . ($this->page - 1) . '">&laquo;</a></li>';
+        '<li class="page-item ' . $class . '"><a href="">&laquo;</a></li>' : //remove link from previous button
+        '<li class="page-item ' . $class . '"><a href="?action=view&page=' . ($this->page - 1) . '">&laquo;</a></li>';
 
         $html .= $previous_page;
 
         if ($start > 1) { //print ... before (previous <<< link)
-            $html .= '<li class="page-item" ><a class="page-link" href="?action=view&page=1">1</a></li>'; //print first page link
+            $html .= '<li class="page-item" ><a href="?action=view&page=1">1</a></li>'; //print first page link
             $html .= '<li class="page-item disabled"><span>...</span></li>'; //print 3 dots if not on first page
         }
 
         //print all the numbered page links
         for ($i = $start; $i <= $end; $i++) {
             $class = ($this->page == $i) ? "active" : ""; //highlight current page
-            $html .= '<li class="page-item ' . $class . '"><a class="page-link" href="?action=view&page=' . $i . '">' . $i . '</a></li>';
+            $html .= '<li class="page-item "><a class="' . $class . '" href="?action=view&page=' . $i . '">' . $i . '</a></li>';
         }
 
         if ($end < $last) { //print ... before next page (>>> link)
             $html .= '<li class="page-item disabled"><span>...</span></li>'; //print 3 dots if not on last page
-            $html .= '<li class="page-item"><a class="page-link" href="?action=view&page=' . $last . '">' . $last . '</a></li>'; //print last page link
+            $html .= '<li class="page-item"><a href="?action=view&page=' . $last . '">' . $last . '</a></li>'; //print last page link
         }
 
         $class = ($this->page == $last) ? "disabled" : ""; //disable (>>> next page link)
 
         //$this->_page + 1 = next page (>>> link)
         $next_page = ($this->page == $last) ?
-        '<li class="page-item ' . $class . '"><a class="page-link" href="">&raquo;</a></li>' : //remove link from next button
-        '<li class="page-item ' . $class . '"><a class="page-link" href="?action=view&page=' . ($this->page + 1) . '">&raquo;</a></li>';
+        '<li class="page-item ' . $class . '"><a href="">&raquo;</a></li>' : //remove link from next button
+        '<li class="page-item ' . $class . '"><a href="?action=view&page=' . ($this->page + 1) . '">&raquo;</a></li>';
 
         $html .= $next_page;
         $html .= '</ul>';

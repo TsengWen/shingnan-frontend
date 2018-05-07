@@ -156,6 +156,36 @@ nav {
     clear: both;
     border: 1px solid #cdcdcd;
 }
+#page .pagelink .pagination {
+    float:right;
+}
+#page .pagelink .pagination a {
+    
+    border-radius: 5px;
+    color:#ffffff;
+    float:left;
+    padding:8px 16px;
+    text-decoration: none;
+}
+
+#page .pagelink .pagination a.active {
+    border-radius: 5px;
+    background-color: #f5ac51;
+    color:#ffffff;
+}
+#page .pagelink .pagination a:hover:not(.active){
+    background-color: #ea141f;
+}
+
+#page .pagelink {
+    width: 100%;
+    margin-bottom: 30px;
+    float: left;
+    background-color: #333333;
+    padding: 20px;
+    clear: both;
+}
+
 
 /* line 181, ../sass/screen.scss */
 
