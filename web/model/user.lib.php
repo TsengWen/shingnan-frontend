@@ -91,7 +91,10 @@ class User
 
         $res = $this->db->prepare($sql);
         $res->bindParam(':userId', $userId, PDO::PARAM_STR);
-        $res->execute();
+        if (!$res->execute()) {
+            $error = $res->errorInfo();
+            $this->setResultMsg('failure', $error[0]);
+        }        
         $userDetailData = $res->fetch();
 
 
