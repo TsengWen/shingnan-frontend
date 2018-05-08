@@ -3,6 +3,7 @@
 
 <head>
     \{include file="common/resource.html"\}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 
 <body class="dark-theme">
@@ -12,12 +13,12 @@
         <!-- main-content -->
         <div id="page">
             \{foreach from=$allnewsData item=article\}
-            <article class="post">
-                <header>
+            <div class="post">
+                <div>
                     <h2 class="title">
                         <a href="#">\{$article.title\}</a>
                     </h2>
-                </header>
+                </div>
                 <a href="#" id=featured-thumbnail>
                     <div class="featured-thumbnail">
                         <img width="250" height="200" src="http://140.116.82.48/shingnan/web/media/\{$article.path\}" alt="Img">
@@ -27,8 +28,11 @@
                 <div class="readMore">
                     <a href="#">繼續閱讀</a>
                 </div>
-            </article>
+            </div>
             \{/foreach\}
+            <div class="pagelink">
+                \{$pagination\}
+            </div>
         </div>
         <!-- todo -->
     </div>

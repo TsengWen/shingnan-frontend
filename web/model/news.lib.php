@@ -13,6 +13,10 @@ class News
     public $error = '';
     public $admin = null;
 
+    private $page; //page number
+    private $limit; //per page
+    private $total; //total data
+
     /**
      * Statistic constructor
      */
@@ -36,13 +40,28 @@ class News
     /**
      * 顯示首頁
      */
-    public function view()
+    public function view($input)
     {
-        $sql1 = 'SELECT `article`.`title`, `article`.`articleId` , `article`.`preview`, `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`path`
+        $this->limit = 5; //show per page
+
+        $this->page = (isset($input['page'])) ? $input['page'] : 1;
+
+        //get total
+        $sql = "SELECT `article`.`title`
+                FROM  `article`
+                WHERE `article`.`type` = 2 ";
+        $totalData = $this->db->prepare($sql);
+        $totalData->execute();
+        $this->total = $totalData->rowCount();
+
+        //get data to show
+        $start_from = ($this->page - 1) * 5;
+
+        $sql1 = "SELECT `article`.`title`, `article`.`preview` , `article`.`articleId` , `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`imageId`,`image`.`path`
                 FROM  `article`
                 LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
                 WHERE `article`.`type` = 2
-                ORDER BY `article`.`createTime` DESC';
+                ORDER BY `article`.`createTime` DESC LIMIT $start_from,$this->limit";
         $sql2 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
 
         $allnewsData = $this->getSQLResult($sql1);
@@ -55,8 +74,62 @@ class News
             $this->smarty->assign('stores', $store_list);
         }
 
+        $pagination = $this->createLinks($this->page);
+        //echo $pagination;
+        $this->smarty->assign('pagination', $pagination);
         $this->smarty->assign('title', '最新消息');
         $this->smarty->display('news.html');
+
+    }
+
+    //pagination link
+    public function createLinks($links)
+    {
+        if ($this->total == 0) {
+            return '';
+        }
+
+        $last = ceil($this->total / $this->limit);
+        $start = (($this->page - $links) > 0) ? $this->page - $links : 1;
+        $end = (($this->page + $links) < $last) ? $this->page + $links : $last;
+
+        $html = '<ul class = "pagination">';
+
+        $class = ($this->page == 1) ? "disabled" : "";
+
+        $previous_page = ($this->page == 1) ?
+        '<li class="page-item ' . $class . '"><a href="">&laquo;</a></li>' : //remove link from previous button
+        '<li class="page-item ' . $class . '"><a href="?action=view&page=' . ($this->page - 1) . '">&laquo;</a></li>';
+
+        $html .= $previous_page;
+
+        if ($start > 1) { //print ... before (previous <<< link)
+            $html .= '<li class="page-item" ><a href="?action=view&page=1">1</a></li>'; //print first page link
+            $html .= '<li class="page-item"><a href="">...</a></li>'; //print 3 dots if not on first page
+        }
+
+        //print all the numbered page links
+        for ($i = $start; $i <= $end; $i++) {
+            $class = ($this->page == $i) ? "active" : ""; //highlight current page
+            $html .= '<li class="page-item "><a class="' . $class . '" href="?action=view&page=' . $i . '">' . $i . '</a></li>';
+        }
+
+        if ($end < $last) { //print ... before next page (>>> link)
+            $html .= '<li class="page-item"><a href="">...</a></li>'; //print 3 dots if not on last page
+            $html .= '<li class="page-item"><a href="?action=view&page=' . $last . '">' . $last . '</a></li>'; //print last page link
+        }
+
+        $class = ($this->page == $last) ? "disabled" : ""; //disable (>>> next page link)
+
+        //$this->_page + 1 = next page (>>> link)
+        $next_page = ($this->page == $last) ?
+        '<li class="page-item ' . $class . '"><a href="">&raquo;</a></li>' : //remove link from next button
+        '<li class="page-item ' . $class . '"><a href="?action=view&page=' . ($this->page + 1) . '">&raquo;</a></li>';
+
+        $html .= $next_page;
+        $html .= '</ul>';
+
+        return $html;
 
     }
 

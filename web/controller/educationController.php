@@ -12,8 +12,10 @@ switch ($method) {
         $action = isset($_GET['action']) ? $_GET['action'] : 'view';
         switch ($action) {
             case 'view':
+                $education->view($_GET);
+                break;
             default:
-                $education->view();
+                break;
         }
         break;
 }

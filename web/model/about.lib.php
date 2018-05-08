@@ -105,7 +105,7 @@ class About
 
         if ($start > 1) { //print ... before (previous <<< link)
             $html .= '<li class="page-item" ><a href="?action=view&page=1">1</a></li>'; //print first page link
-            $html .= '<li class="page-item disabled"><span>...</span></li>'; //print 3 dots if not on first page
+            $html .= '<li class="page-item"><a href="">...</a></li>'; //print 3 dots if not on first page
         }
 
         //print all the numbered page links
@@ -115,7 +115,7 @@ class About
         }
 
         if ($end < $last) { //print ... before next page (>>> link)
-            $html .= '<li class="page-item disabled"><span>...</span></li>'; //print 3 dots if not on last page
+            $html .= '<li class="page-item"><a href="">...</a></li>'; //print 3 dots if not on last page
             $html .= '<li class="page-item"><a href="?action=view&page=' . $last . '">' . $last . '</a></li>'; //print last page link
         }
 
