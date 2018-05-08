@@ -3,12 +3,6 @@
 
 <head>
     \{include file="common/resource.html"\}
-    <style>
-        .map {
-            height: 350px;
-            width: 100%;
-        }
-    </style>
 
 </head>
 
@@ -19,11 +13,19 @@
         <!-- main-content -->
 
 
-        <div class="row mx-auto mb-3" style="width: 100%; color:white;">
+        <div class="row mx-auto mb-3" style="width: 80%; color:white;">
             <h4 class="mt-5 text-left">歡迎與我們聯絡</h4>
-            <hr class="mb-4" style="width: 100%; border-top: 3px solid #bfc3c4;"> \{foreach from=$store item=s key=i\}
+            <hr class="mb-4" style="width: 100%; border-top: 3px solid #bfc3c4;"> 
+            \{foreach from=$store item=s key=i\}
             <div class="mt-5 col-7 text-right">
-                <div class="map" id="map\{$i\}"></div>
+                <iframe  
+                  height="350" 
+                  width="600"
+                  frameborder="0" 
+                  style="border:0" 
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBjKXroQPs9W3SXkHJr4fW6zMbsOp0962A&q=興南眼鏡行\{$s.storeName\}" 
+                  allowfullscreen>
+              </iframe>
             </div>
             <div class="mt-5 col-5">
                 <h5>【\{$s.storeName\}】</h5>
@@ -42,7 +44,7 @@
                     <img src="../img/facebook_icon.png" width="35px">
                 </a>
                 &nbsp&nbsp
-                <a href="https://www.facebook.com/tainan.shingnan/?hc_ref=ARRVhUNFgLnDC9djAB0EuNjDeBfJGGo6aVruH3E1dpSHhHTfqpiealw6Xn2SZp0uhxQ&fref=nf">
+                <a href="https://www.instagram.com/shing_nan/">
                     <img src="../img/ig_icon.png" width="35px">
                 </a>
             </div>
@@ -56,36 +58,6 @@
     </div>
     <!-- footer -->
     \{include file="common/footer.html"\}
-</body>
-<script>
-    var x = \{ $lat| json_encode\};
-    var y = \{ $lng| json_encode\};
-
-    function initMap() {
-
-        var latlng = [];
-        var myMarker = [];
-        var map = [];
-        var myOptions = [];
-        for (var i = 0; i < x.length; i++) {
-            latlng[i] = new google.maps.LatLng(x[i], y[i]);
-
-            myOptions[i] = {
-                zoom: 19,
-                center: latlng[i],
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            map[i] = new google.maps.Map(document.getElementById('map' + i), myOptions[i]);
-
-            myMarker[i] = new google.maps.Marker({
-                position: latlng[i],
-                map: map[i],
-            });
-
-        }
-    }
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEaxtJ4cXdEHXGNN83VPMSs0f0w1_rFCw&callback=initMap"></script>
+</body> 
 
 </html>
