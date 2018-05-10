@@ -50,10 +50,13 @@ class Index
 
         if (!is_null($img_list)) {
             $images = array();
+            $text = array();
             foreach ($img_list as $img) {
-                $images[$img['imageName']] = 'http://140.116.82.48/shingnan/web/controller/' . $img['path'];
+                $images[$img['imageName']] = 'http://140.116.82.48/shingnan/web/' . substr($img['path'], 3);
+                $text[$img['imageName']] = $img['link'];
             }
-            $this->smarty->assign('images', $images);        
+            $this->smarty->assign('images', $images);
+            $this->smarty->assign('text', $text);      
         }
 
         if (!is_null($store_list)) {
