@@ -53,12 +53,21 @@
             </li>
         </ul>
         <ul class="navbar-nav">
+            \{if $smarty.session.isLogin\}
+            <li class="nav-item">
+                <a class="nav-link nav-link-text" href="loginController.php?action=logout">
+                    <span class="nav-span">LOGOUT</span>
+                    <span>登出</span>
+                </a>
+            </li>
+            \{else\}
             <li class="nav-item">
                 <a class="nav-link nav-link-text" href="loginController.php?action=view">
                     <span class="nav-span">LOGIN</span>
                     <span>登入</span>
                 </a>
             </li>
+            \{/if\}
         </ul>
     </div>
 </nav>

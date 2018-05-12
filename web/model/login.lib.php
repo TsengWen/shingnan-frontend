@@ -109,11 +109,21 @@ class Login
 
 
     }
+
+    /**
+     * 登出動作 
+     */
+    public function logout()
+    {
+        session_unset();
+        session_destroy();
+        $this->viewLogin();
+    }
     /**
      * 登入頁面
      */
     public function view()
-    {
+    {   
         if (!isset($_SESSION['isLogin'])) {
             $this->viewLogin();
             return;

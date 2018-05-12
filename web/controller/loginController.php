@@ -27,6 +27,9 @@ switch ($method) {
             case 'view':
                 $login->view();
                 break;
+            case 'logout':
+                $login->logout();
+                break;
             default:
                 break;
         }
