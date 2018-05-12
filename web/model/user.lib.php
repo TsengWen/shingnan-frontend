@@ -115,13 +115,12 @@ class User
                 SET  `lastUpdateTime` = :lastUpdateTime,
                      `userName` = :userName, 
                      `userId` = :userId, `phone` = :phone,
-                     `address` = :address, `birthday` = :birthday
+                     `address` = :address
                 WHERE `userId` = :userId;";
 
         $now = date('Y-m-d H:i:s');
         $res = $this->db->prepare($sql);
 
-        $res->bindParam(':birthday', $input['birthday'], PDO::PARAM_STR);
         $res->bindParam(':lastUpdateTime', $now, PDO::PARAM_STR);
         $res->bindParam(':userId', $userId, PDO::PARAM_STR);
         $res->bindParam(':phone', $input['phone'], PDO::PARAM_STR);
