@@ -114,8 +114,12 @@ class Login
      */
     public function view()
     {
+        if (!isset($_SESSION['isLogin'])) {
+            $this->viewLogin();
+            return;
+        }
         $this->setResultMsg();
-        $this->smarty->display('login.html');
+        header("Location:../controller/userController.php?action=view");
     }
 
     /**
