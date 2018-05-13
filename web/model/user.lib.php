@@ -240,7 +240,8 @@ class User
 
     public function viewLogin()
     {
-        $_SESSION['isLogin'] = false;
+        session_unset();
+        session_destroy();
         $this->smarty->assign('error', $this->error);
         $this->smarty->assign('homePath', APP_ROOT_DIR);
         $this->smarty->display('login.html');
