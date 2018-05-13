@@ -1,1 +1,88 @@
-pointRecord
+<!DOCTYPE html>
+<html>
+
+<head>
+    \{include file="common/resource.html"\}
+</head>
+
+
+<script>
+
+</script>
+
+<body>
+    <div class="container-fluid content px-1 mx-1">
+        <!-- navigationbar -->
+        \{include file="common/navigationbar.html"\}
+        <!-- main-content -->
+
+
+        <div class="mx-auto" style="width:60%;">
+            <div class="row alert alert-light my-3" role="alert" style="background-color:#E8E6D9;">
+                點數查詢
+            </div>
+            <div class="row">
+                <table class="col-3 mt-4 table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">目前點數</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">\{$remainPoint\}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <table class="table mx-auto table-bordered">
+                    <thead>
+                        <tr class="d-flex" data-toggle="collapse" data-target=".tran" >
+                            <th class="col-3">訂購時間</th>
+                            <th class="col-3">訂單編號</th>
+                            <th class="col-3">消費金額</th>
+                            <th class="col-3">得到點數</th>
+                        </tr>
+                    </thead>
+                    <tbody class="collapse tran show">
+                        \{foreach from=$allTrans item=singleTran\}
+                        <tr class="d-flex">
+                            <th class="col-3">\{$singleTran["createTime"]\}</th>
+                            <th class="col-3">\{$singleTran["tranId"]\}</th>
+                            <th class="col-3">\{$singleTran["price"]\}</th>
+                            <th class="col-3">\{$singleTran["point"]\}</th>
+                        </tr>
+                        \{/foreach\}
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <table class="col-9 table  table-bordered">
+                    <thead>
+                        <tr class="d-flex">
+                            <th class="col-8">被推薦人</th>
+                            <th class="col-4">贈與點數</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="d-flex">
+
+                            \{foreach from=$allintroducees item=introducee\}
+                            <th class="col-8">\{$introducee["userName"]\}</th>
+                            <th class="col-4">200</th>
+                            \{/foreach\}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button id="go-top-btn">TOP</button>
+    </div>
+    <!-- footer -->
+    \{include file="common/footer.html"\}
+</body>
+
+</html>
