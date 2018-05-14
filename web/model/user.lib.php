@@ -144,9 +144,10 @@ class User
         }
         $userId = $_SESSION["userId"];
 
+
         $sql = "SELECT `tran`.`tranId`, `tran`.`createTime`, `tran`.`checkState`, `tran`.`price`
         FROM `tran` 
-        WHERE `userID` = '{$userId}' AND `tran`.`isDelete` = 0;";
+        WHERE `userID` = '{$userId}' AND `tran`.`isDelete` = 0 AND `tran`.`createTime` >= DATE_SUB(NOW(),INTERVAL 1 YEAR);";
         $res = $this->db->prepare($sql);
         if(!$res->execute()) {
             goto failed;
