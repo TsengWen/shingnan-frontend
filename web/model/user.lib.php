@@ -215,7 +215,7 @@ class User
 
         $sql = "SELECT `tranId`, `createTime`, `price`, `point`
                 FROM `tran`
-                WHERE `userId`=:userId AND isDelete=0;";
+                WHERE `userId`=:userId AND `isDelete`=0 AND `point`>0;";
         
         $res = $this->db->prepare($sql);
         $res->bindParam(':userId', $userId, PDO::PARAM_STR);
