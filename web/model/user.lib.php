@@ -115,13 +115,12 @@ class User
                 SET  `lastUpdateTime` = :lastUpdateTime,
                      `userName` = :userName, 
                      `userId` = :userId, `phone` = :phone,
-                     `address` = :address, `birthday` = :birthday
+                     `address` = :address
                 WHERE `userId` = :userId;";
 
         $now = date('Y-m-d H:i:s');
         $res = $this->db->prepare($sql);
 
-        $res->bindParam(':birthday', $input['birthday'], PDO::PARAM_STR);
         $res->bindParam(':lastUpdateTime', $now, PDO::PARAM_STR);
         $res->bindParam(':userId', $userId, PDO::PARAM_STR);
         $res->bindParam(':phone', $input['phone'], PDO::PARAM_STR);
@@ -197,7 +196,48 @@ class User
             $this->viewLogin();
             return;
         }
+        $userId = $_SESSION['userId'];
+        $sql = "SELECT `user`.`point`
+                FROM `user` 
+                WHERE `user`.`userId`=:userId;";
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':userId', $userId, PDO::PARAM_STR);
+        if(!$res->execute()) {
+            goto failed;
+        }
+        $result = $res->fetch();
+        $this->smarty->assign('remainPoint', $result["point"]);
+
+
+        $sql = "SELECT `tranId`, `createTime`, `price`, `point`
+                FROM `tran`
+                WHERE `userId`=:userId AND isDelete=0;";
+        
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':userId', $userId, PDO::PARAM_STR);
+        if(!$res->execute()) {
+            goto failed;
+        }
+        $allTrans = $res->fetchAll();
+        $this->smarty->assign('allTrans', $allTrans);
+
+
+        $sql = "SELECT `user`.`userName`
+                FROM `user` 
+                WHERE `user`.`introducerId`=:userId;";
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':userId', $userId, PDO::PARAM_STR);
+        if(!$res->execute()) {
+            goto failed;
+        }
+        $allintroducees = $res->fetchAll();
+        $this->smarty->assign('allintroducees', $allintroducees);
+    
         $this->smarty->display('user/pointRecord.html');
+
+        failed :
+        $error = $res->errorInfo();
+        $this->setResultMsg('failure', $error[0]);
     }
 
     public function couponView()
@@ -241,7 +281,8 @@ class User
 
     public function viewLogin()
     {
-        $_SESSION['isLogin'] = false;
+        session_unset();
+        session_destroy();
         $this->smarty->assign('error', $this->error);
         $this->smarty->assign('homePath', APP_ROOT_DIR);
         $this->smarty->display('login.html');

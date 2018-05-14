@@ -109,13 +109,25 @@ class Login
 
 
     }
+
+    /**
+     * 登出動作 
+     */
+    public function logout()
+    {
+        $this->viewLogin();
+    }
     /**
      * 登入頁面
      */
     public function view()
-    {
+    {   
+        if (!isset($_SESSION['isLogin'])) {
+            $this->viewLogin();
+            return;
+        }
         $this->setResultMsg();
-        $this->smarty->display('login.html');
+        header("Location:../controller/userController.php?action=view");
     }
 
     /**
@@ -131,7 +143,8 @@ class Login
 
     public function viewLogin()
     {
-        $_SESSION['isLogin'] = false;
+        session_unset();
+        session_destroy();
         $this->smarty->assign('error', $this->error);
         $this->smarty->assign('homePath', APP_ROOT_DIR);
         $this->smarty->display('login.html');
