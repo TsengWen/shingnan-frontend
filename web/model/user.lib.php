@@ -65,6 +65,7 @@ class User
             $this->viewLogin();
             return;
         }
+        $this->smarty->assign('title', '會員專區');
         $this->smarty->display('user/userDashboard.html');
     }
 
@@ -100,6 +101,7 @@ class User
 
         $this->smarty->assign('userDetailData', $userDetailData);
         $this->smarty->assign('userId', $userId);
+        $this->smarty->assign('title', '會員資料');
         $this->smarty->display('user/userDetail.html');
     }
 
@@ -183,6 +185,7 @@ class User
             }
         }
         $this->smarty->assign('allTrans', $allTrans);
+        $this->smarty->assign('title', '訂單查詢');
         $this->smarty->display('user/orderRecord.html');
         return;
 
@@ -233,8 +236,9 @@ class User
         }
         $allintroducees = $res->fetchAll();
         $this->smarty->assign('allintroducees', $allintroducees);
-    
+        $this->smarty->assign('title', '點數查詢');
         $this->smarty->display('user/pointRecord.html');
+        
 
         failed :
         $error = $res->errorInfo();
@@ -247,6 +251,7 @@ class User
             $this->viewLogin();
             return;
         }
+        $this->smarty->assign('title', '專屬折價卷');
         $this->smarty->display('user/coupon.html');
 
     }
@@ -257,6 +262,7 @@ class User
             $this->viewLogin();
             return;
         }
+        $this->smarty->assign('title', '消息通知 ＆ 通告');
         $this->smarty->display('user/info.html');
 
     }
@@ -286,6 +292,8 @@ class User
         session_destroy();
         $this->smarty->assign('error', $this->error);
         $this->smarty->assign('homePath', APP_ROOT_DIR);
+        $this->smarty->assign('title', '登入頁面');
         $this->smarty->display('login.html');
+        
     }
 }
