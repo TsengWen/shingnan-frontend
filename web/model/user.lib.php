@@ -273,6 +273,17 @@ class User
             $this->viewLogin();
             return;
         }
+        $userId = $_SESSION['userId'];
+        $sql = "SELECT `pushCoupon`.`couponId`, `coupon`.`price`, `coupon`.`content`, `coupon`.`title`, `coupon`.`startTime`, `coupon`.`endTime`
+                FROM `pushCoupon`
+                LEFT JOIN `coupon` ON `coupon`.`couponId`=`pushCoupon`.`couponId`
+                WHERE `pushCoupon`.`userId`=:userId AND `coupon`.`type`=2 AND `coupon`.`isDelete`=0 AND `coupon`.`endTime` >= Now();";
+
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':userId', $userId, PDO::PARAM_STR);
+        $res->execute();
+        $allInfos = $res->fetchAll();
+        $this->smarty->assign('allInfos', $allInfos);
         $this->smarty->assign('title', '消息通知 ＆ 通告');
         $this->smarty->display('user/info.html');
 
