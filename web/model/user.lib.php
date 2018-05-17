@@ -252,7 +252,7 @@ class User
             return;
         }
         $userId = $_SESSION['userId'];
-        $sql = "SELECT `pushCoupon`.`couponId`, `coupon`.`price`, `coupon`.`content`, `coupon`.`title`, `pushCoupon`.`isUsed`
+        $sql = "SELECT `pushCoupon`.`couponId`, `coupon`.`price`, `coupon`.`content`, `coupon`.`title`, `pushCoupon`.`isUsed`, `coupon`.`startTime`, `coupon`. `endTime`
                 FROM `pushCoupon`
                 LEFT JOIN `coupon` ON `coupon`.`couponId`=`pushCoupon`.`couponId`
                 WHERE `pushCoupon`.`userId`=:userId AND `coupon`.`type`=1 AND `coupon`.`isDelete`=0 AND `coupon`.`endTime` >= Now();";
