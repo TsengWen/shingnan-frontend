@@ -255,7 +255,7 @@ class User
         $sql = "SELECT `pushCoupon`.`couponId`, `coupon`.`price`, `coupon`.`content`, `coupon`.`title`, `pushCoupon`.`isUsed`, `coupon`.`startTime`, `coupon`. `endTime`
                 FROM `pushCoupon`
                 LEFT JOIN `coupon` ON `coupon`.`couponId`=`pushCoupon`.`couponId`
-                WHERE `pushCoupon`.`userId`=:userId AND `coupon`.`type`=1 AND `coupon`.`isDelete`=0 AND `coupon`.`endTime` >= Now();";
+                WHERE `pushCoupon`.`userId`=:userId AND `coupon`.`type`=2 AND `coupon`.`isDelete`=0 AND `coupon`.`endTime` >= Now();";
 
         $res = $this->db->prepare($sql);
         $res->bindParam(':userId', $userId, PDO::PARAM_STR);
@@ -277,7 +277,7 @@ class User
         $sql = "SELECT `pushCoupon`.`couponId`, `coupon`.`price`, `coupon`.`content`, `coupon`.`title`, `coupon`.`startTime`, `coupon`.`endTime`
                 FROM `pushCoupon`
                 LEFT JOIN `coupon` ON `coupon`.`couponId`=`pushCoupon`.`couponId`
-                WHERE `pushCoupon`.`userId`=:userId AND `coupon`.`type`=2 AND `coupon`.`isDelete`=0 AND `coupon`.`endTime` >= Now();";
+                WHERE `pushCoupon`.`userId`=:userId AND `coupon`.`type`=1 AND `coupon`.`isDelete`=0 AND `coupon`.`endTime` >= Now();";
 
         $res = $this->db->prepare($sql);
         $res->bindParam(':userId', $userId, PDO::PARAM_STR);
