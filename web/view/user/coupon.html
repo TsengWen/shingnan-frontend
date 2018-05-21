@@ -1,1 +1,63 @@
-couponView
+<!DOCTYPE html>
+<html>
+
+<head>
+    \{include file="common/resource.html"\}
+</head>
+
+
+<script>
+
+</script>
+
+<body>
+    <div class="container-fluid content px-1 mx-1">
+        <!-- navigationbar -->
+        \{include file="common/navigationbar.html"\}
+        <!-- main-content -->
+
+
+        <div class="mx-auto mt-5" style="width:60%;">
+            <div class="row alert my-3" role="alert" style="color:#4169E1; background-color:#DCDCDC;">
+                折價卷
+            </div>
+            <div class="row">
+                <table class="mt-4 table table-bordered">
+                    <thead>
+                        <tr class="d-flex" data-toggle="collapse" data-target=".tran" style="color:white; background-color:#A9A9A9	;">
+                            <th style="text-align: center;" class="col-2">折價卷面額</th>
+                            <th style="text-align: center;" class="col-8">折價卷說明</th>
+                            <th style="text-align: center;"  class="col-2">使用狀況</th>
+                        </tr>
+                    </thead>
+                    <tbody class="collapse tran show">
+                        \{foreach from=$allCoupons item=coupon\}
+                        <tr class="d-flex">
+                            <th class="col-2">\{$coupon["price"]\}</th>
+                            <th class="col-8">
+                                <p style="color:red; text-align: center;">\{$coupon["title"]\} </p>
+                                <p>\{$coupon["content"]\}</p>
+                                <sub>使用期限: \{date('Y/m/d', strtotime($coupon["startTime"]))\}-\{date('Y/m/d', strtotime($coupon["endTime"]))\}</sub>
+                            </th>
+                            <th class="col-2">
+                                \{if $coupon["isUsed"] === '0'\}
+                                    未使用
+                                \{else\}
+                                    已使用
+                                \{/if\}
+                            </th>
+                        </tr>
+                        \{/foreach\}
+
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <button id="go-top-btn">TOP</button>
+    </div>
+    <!-- footer -->
+    \{include file="common/footer.html"\}
+</body>
+
+</html>

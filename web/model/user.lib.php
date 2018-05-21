@@ -65,6 +65,7 @@ class User
             $this->viewLogin();
             return;
         }
+        $this->smarty->assign('title', '會員專區');
         $this->smarty->display('user/userDashboard.html');
     }
 
@@ -100,6 +101,7 @@ class User
 
         $this->smarty->assign('userDetailData', $userDetailData);
         $this->smarty->assign('userId', $userId);
+        $this->smarty->assign('title', '會員資料');
         $this->smarty->display('user/userDetail.html');
     }
 
@@ -144,9 +146,10 @@ class User
         }
         $userId = $_SESSION["userId"];
 
+
         $sql = "SELECT `tran`.`tranId`, `tran`.`createTime`, `tran`.`checkState`, `tran`.`price`
         FROM `tran` 
-        WHERE `userID` = '{$userId}' AND `tran`.`isDelete` = 0;";
+        WHERE `userID` = '{$userId}' AND `tran`.`isDelete` = 0 AND `tran`.`createTime` >= DATE_SUB(NOW(),INTERVAL 1 YEAR);";
         $res = $this->db->prepare($sql);
         if(!$res->execute()) {
             goto failed;
@@ -182,6 +185,7 @@ class User
             }
         }
         $this->smarty->assign('allTrans', $allTrans);
+        $this->smarty->assign('title', '訂單查詢');
         $this->smarty->display('user/orderRecord.html');
         return;
 
@@ -211,7 +215,7 @@ class User
 
         $sql = "SELECT `tranId`, `createTime`, `price`, `point`
                 FROM `tran`
-                WHERE `userId`=:userId AND isDelete=0;";
+                WHERE `userId`=:userId AND `isDelete`=0 AND `point`>0;";
         
         $res = $this->db->prepare($sql);
         $res->bindParam(':userId', $userId, PDO::PARAM_STR);
@@ -232,8 +236,9 @@ class User
         }
         $allintroducees = $res->fetchAll();
         $this->smarty->assign('allintroducees', $allintroducees);
-    
+        $this->smarty->assign('title', '點數查詢');
         $this->smarty->display('user/pointRecord.html');
+        
 
         failed :
         $error = $res->errorInfo();
@@ -246,6 +251,18 @@ class User
             $this->viewLogin();
             return;
         }
+        $userId = $_SESSION['userId'];
+        $sql = "SELECT `pushCoupon`.`couponId`, `coupon`.`price`, `coupon`.`content`, `coupon`.`title`, `pushCoupon`.`isUsed`, `coupon`.`startTime`, `coupon`. `endTime`
+                FROM `pushCoupon`
+                LEFT JOIN `coupon` ON `coupon`.`couponId`=`pushCoupon`.`couponId`
+                WHERE `pushCoupon`.`userId`=:userId AND `coupon`.`type`=2 AND `coupon`.`isDelete`=0 AND `coupon`.`endTime` >= Now();";
+
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':userId', $userId, PDO::PARAM_STR);
+        $res->execute();
+        $allCoupons = $res->fetchAll();
+        $this->smarty->assign('allCoupons', $allCoupons);
+        $this->smarty->assign('title', '專屬折價卷');
         $this->smarty->display('user/coupon.html');
 
     }
@@ -256,6 +273,18 @@ class User
             $this->viewLogin();
             return;
         }
+        $userId = $_SESSION['userId'];
+        $sql = "SELECT `pushCoupon`.`couponId`, `coupon`.`price`, `coupon`.`content`, `coupon`.`title`, `coupon`.`startTime`, `coupon`.`endTime`
+                FROM `pushCoupon`
+                LEFT JOIN `coupon` ON `coupon`.`couponId`=`pushCoupon`.`couponId`
+                WHERE `pushCoupon`.`userId`=:userId AND `coupon`.`type`=1 AND `coupon`.`isDelete`=0 AND `coupon`.`endTime` >= Now();";
+
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':userId', $userId, PDO::PARAM_STR);
+        $res->execute();
+        $allInfos = $res->fetchAll();
+        $this->smarty->assign('allInfos', $allInfos);
+        $this->smarty->assign('title', '消息通知 ＆ 通告');
         $this->smarty->display('user/info.html');
 
     }
@@ -285,6 +314,8 @@ class User
         session_destroy();
         $this->smarty->assign('error', $this->error);
         $this->smarty->assign('homePath', APP_ROOT_DIR);
+        $this->smarty->assign('title', '登入頁面');
         $this->smarty->display('login.html');
+        
     }
 }
