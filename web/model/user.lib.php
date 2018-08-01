@@ -113,7 +113,7 @@ class User
         }
 
         $userId = $_SESSION["userId"];
-        $sql = "UPDATE `shingnan`.`user`
+        $sql = "UPDATE `user`
                 SET  `lastUpdateTime` = :lastUpdateTime,
                      `userName` = :userName, 
                      `userId` = :userId, `phone` = :phone,
