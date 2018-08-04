@@ -38,7 +38,7 @@ class Education
     }
 
     /**
-     * 顯示
+     * 顯示目錄
      */
     public function view($input)
     {
@@ -131,6 +131,35 @@ class Education
 
         return $html;
 
+    }
+
+    /**
+     * 顯示文章內容
+     */
+    public function viewContent($input)
+    {
+        //$sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        //$store_list = $this->getSQLResult($sql);
+        $sql = "SELECT `article`.`articleId`, `article`.`title`, `article`.`content`,`article`.`lastUpdateTime`
+                FROM  `article`
+                WHERE  `article`.`isDelete` = 0 and `article`.`type` = 1 and
+                `article`.`articleId` = :educationId";
+        $res = $this->db->prepare($sql);
+        $res->bindParam(':educationId', $input['id'], PDO::PARAM_STR);
+        $res->execute();
+        $ContentData = $res->fetch();
+
+        $sql2 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $store_list = $this->getSQLResult($sql2);
+        if (!is_null($store_list)) {
+            $this->smarty->assign('stores', $store_list);
+        }
+        // if (!is_null($store_list)) {
+        //     $this->smarty->assign('stores', $store_list);
+        // }
+        $this->smarty->assign('ContentData', $ContentData);
+        $this->smarty->assign('title', '興南眼鏡');
+        $this->smarty->display('article_content.html');
     }
 
     /**

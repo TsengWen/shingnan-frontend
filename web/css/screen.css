@@ -209,6 +209,7 @@ nav {
     border-radius: 5px;
     background-color: #f5ac51;
     color:#ffffff;
+
 }
 #page .pagelink .pagination a:hover:not(.active){
     background-color: #ea141f;
@@ -238,6 +239,11 @@ nav {
 
 #page .post .title a {
     color: #ffffff;
+    text-decoration: none;
+} 
+#page .post .title a:hover {
+    color: #DDDDDD;
+    text-decoration: none;
 }
 
 /* line 221, ../sass/screen.scss */
@@ -288,6 +294,7 @@ nav {
 
 #page .post .readMore a:hover {
     color: #ffffff;
+    text-decoration: none;
     background: #ea141f;
 }
 
