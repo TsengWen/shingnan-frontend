@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    \{include file="common/resource.html"\}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+
+<body class="dark-theme">
+    <div class="container-fluid content p-0">
+        <!-- navigationbar -->
+        \{include file="common/navigationbar.html"\}
+        <!-- main-content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="mt-4">\{$ContentData.title\}</h1>
+                    <hr>
+                    <p>Posted on \{$ContentData.lastUpdateTime\}</p>
+                    <hr>
+                    <div class="articleContent">\{$ContentData.content\}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- todo -->
+    </div>
+    <!-- footer -->
+    \{include file="common/footer.html"\}
+</body>
+
+</html>

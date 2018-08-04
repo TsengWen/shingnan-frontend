@@ -11,27 +11,29 @@
         <!-- navigationbar -->
         \{include file="common/navigationbar.html"\}
         <!-- main-content -->
-        <div id="page">
-            \{foreach from=$allaboutData item=article\}
-            <div class="post">
-                <div>
-                    <h2 class="title">
-                        <a href="#">\{$article.title\}</a>
+        <div class="container">
+            <div id="page">
+                \{foreach from=$allaboutData item=article\}
+                <div class="post">
+                    <div>
+                        <h2 class="title">
+                        <a href="aboutController.php?action=viewContent&id=\{$article.articleId\}">\{$article.title\}</a>
                     </h2>
-                </div>
-                <a href="#" id=featured-thumbnail>
-                    <div class="featured-thumbnail">
-                        <img width="250" height="200" src="http://140.116.82.48/shingnan/web/media/\{$article.path\}" alt="Img">
                     </div>
-                </a>
-                <div class="post-content">\{$article.preview\}</div>
-                <div class="readMore">
-                    <a href="#">繼續閱讀</a>
+                    <a href="aboutController.php?action=viewContent&id=\{$article.articleId\}" id=featured-thumbnail>
+                        <div class="featured-thumbnail">
+                            <img width="250" height="200" src="../../../shingnan/web/media/\{$article.path\}" alt="Img">
+                        </div>
+                    </a>
+                    <div class="post-content">\{$article.preview\}</div>
+                    <div class="readMore">
+                        <a href="aboutController.php?action=viewContent&id=\{$article.articleId\}">繼續閱讀</a>
+                    </div>
                 </div>
-            </div>
-            \{/foreach\}
-            <div class="pagelink">
-                \{$pagination\}
+                \{/foreach\}
+                <div class="pagelink">
+                    \{$pagination\}
+                </div>
             </div>
         </div>
         <!-- todo -->
