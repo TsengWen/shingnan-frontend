@@ -71,12 +71,31 @@ class Brand
     /**
      * 顯示品牌詳細資料
      */
-    public function viewDetail() {
-        $sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
-        $store_list = $this->getSQLResult($sql);
+    public function viewDetail($inputs) {
+        $brandId = $inputs['brandId'];
+        $sql1 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $sql2 = "SELECT `brand`.`brandName`, `brand`.`description`, `image`.`path` 
+                 FROM `brand` LEFT JOIN `image` 
+                 ON `brand`.`brandId` = `image`.`itemId` 
+                 WHERE `brand`.`isDelete` = 0 AND `brand`.`brandId` = '$brandId'";
+        $store_list = $this->getSQLResult($sql1);
+        $brand = $this->getSQLResult($sql2);
 
+        // footer info
         if (!is_null($store_list)) {
             $this->smarty->assign('stores', $store_list); 
+        }
+
+        // brand info
+        if (!is_null($brand)) {
+            $brand = $brand[0];
+            if (!is_null($brand['path'])) {
+                $host = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+                $pieces = explode("/", $_SERVER['REQUEST_URI']);
+                $host_url = "$host//$pieces[1]/$pieces[2]/";
+                $brand['path'] = $host_url . substr($brand['path'], 3);
+            }
+            $this->smarty->assign('brand', $brand); 
         }
         
         $this->smarty->assign('title', '品牌介紹');

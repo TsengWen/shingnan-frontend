@@ -24,7 +24,7 @@ switch ($method) {
         $action = isset($_GET['action']) ? $_GET['action'] : 'view';
         switch ($action) {
             case 'viewDetail':
-                $brand->viewDetail();
+                $brand->viewDetail($_GET);
                 break;
             case 'view':
             default:

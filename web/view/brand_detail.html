@@ -11,15 +11,10 @@
         \{include file="common/navigationbar.html"\}
         <!-- main-content -->
         <div class="brand-glasses w-100 p-5">
-            <img class="d-flex mx-auto img-fluid" src="http://placehold.it/240x80">
+            <img class="d-flex mx-auto img-fluid" src="\{if isset($brand['path'])\}\{$brand['path']\}\{else\}http://placehold.it/240x80\{/if\}">
             <div class="row my-4">
                 <img class="img-fluid col-8" src="../img/cover.png" style="height:250px;" alt="Big img">
-                <p class="col-4">With hip hop music and style as its core themes, the ‘ESl Hip Hop’ blog makes learning fun. This is an ESL
-                    blog that is powerfully entertaining and educational. You’ll be glad to know you don’t need to be a rapper
-                    to be able to learn from it. Hip hop artists are known for their command of language and lyrical freedom.
-                    This is well captured in these instructive posts. For example, there is a post on understanding the zero
-                    conditional by examining one of M.I.A’s songs. The past perfect is explored through the songs of A Tribe
-                    Called Quest. Many posts feature vocabulary lists, videos and picture dictionaries.</p>
+                <p class="col-4">\{$brand['description']\}</p>
             </div>
         </div>
         <!-- glasses of brand -->
