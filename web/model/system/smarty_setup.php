@@ -19,6 +19,6 @@ class SmartyConfig extends Smarty
         $this->compile_check   = true;
         $this->force_compile   = true;
 
-        //$this->debugging = true;
+        // $this->debugging = true;
     }
 }

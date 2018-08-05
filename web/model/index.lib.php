@@ -38,11 +38,6 @@ class Index
      */
     public function view()
     {
-        // if ($_SESSION['isLogin'] == true) {
-        //     // member login
-        // } else {
-            
-        // }
         $sql1 = "SELECT * FROM `image` WHERE `itemId` like 'index_%'";
         $sql2 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
         $img_list = $this->getSQLResult($sql1);   
@@ -52,6 +47,7 @@ class Index
             $images = array();
             $text = array();
             foreach ($img_list as $img) {
+                // 注意這個要改，目前是寫暫定的網址
                 $images[$img['imageName']] = 'http://140.116.82.48/shingnan/web/' . substr($img['path'], 3);
                 $text[$img['imageName']] = $img['link'];
             }
