@@ -46,9 +46,14 @@ class Index
         if (!is_null($img_list)) {
             $images = array();
             $text = array();
+            $host = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+            $pieces = explode("/", $_SERVER['REQUEST_URI']);
+            $host_url = "$host//$pieces[1]/$pieces[2]/";
+
             foreach ($img_list as $img) {
                 // 注意這個要改，目前是寫暫定的網址
-                $images[$img['imageName']] = 'http://140.116.82.48/shingnan/web/' . substr($img['path'], 3);
+                // 'http://140.116.82.48/shingnan/web/'
+                $images[$img['imageName']] = $host_url . substr($img['path'], 3);
                 $text[$img['imageName']] = $img['link'];
             }
             $this->smarty->assign('images', $images);
