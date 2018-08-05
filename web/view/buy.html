@@ -13,31 +13,11 @@
         <img class="img-fluid p-5" src="http://placehold.it/1920x720" alt="Big img">
         <div class="glasses-class-bar">選品牌</div>
         <div class="row mx-auto my-5" style="width: 70%;">
+            \{foreach from=$brand_imgs item=$brand\}
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brand_imgs[0])\}\{$brand_imgs[0].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
+                <img class="rounded" src="\{if isset($brand['path'])\}\{$brand['path']\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
             </div>
-            <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brand_imgs[1])\}\{$brand_imgs[1].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
-            </div>
-            <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brand_imgs[2])\}\{$brand_imgs[2].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
-            </div>
-            <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brand_imgs[3])\}\{$brand_imgs[3].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
-            </div>
-            <div class="w-100"></div>
-            <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brand_imgs[4])\}\{$brand_imgs[4].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
-            </div>
-            <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brand_imgs[5])\}\{$brand_imgs[5].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
-            </div>
-            <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brand_imgs[6])\}\{$brand_imgs[6].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
-            </div>
-            <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <img class="rounded" src="\{if isset($brand_imgs[7])\}\{$brand_imgs[7].path\}\{else\}../img/01.jpg\{/if\}" style="width: 100%;">
-            </div>
+            \{/foreach\}
             <div class="w-100"></div>
             <div class="col text-right p-1">
                 <a class="btn btn-secondary border-dark" href="buyController.php?action=viewDetail">more</a>

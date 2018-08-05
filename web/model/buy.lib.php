@@ -38,15 +38,14 @@ class Buy
      */
     public function view()
     {
-        $sql1 = "SELECT `path` FROM `image`,
-                (SELECT `brandId` FROM `brand`
-                 WHERE `isDelete` = 0
+        $sql1 = "SELECT `brand`.`brandId`, `image`.`path` 
+                 FROM `brand` LEFT JOIN `image` 
+                 ON `brand`.`brandId` = `image`.`itemId` 
+                 WHERE `brand`.`isDelete` = 0
                  ORDER BY `lastUpdateTime`
-                 DESC LIMIT 0, 8) as b
-                 WHERE `itemId` = b.`brandId`";
+                 DESC LIMIT 0, 8";
         $sql2 = "SELECT * FROM `style` WHERE `isDelete` = 0";
         $sql3 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
-        
 
         $brand_list = $this->getSQLResult($sql1);
         $style_list = $this->getSQLResult($sql2);
@@ -55,7 +54,13 @@ class Buy
         if (!is_null($brand_list)) {
             $brand_imgs = array();
             foreach ($brand_list as $img) {
-                $brand_imgs[] = 'http://140.116.82.48/shingnan/web/controller/' . $img['path'];
+                if (!is_null($img['path'])) {
+                    $host = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+                    $pieces = explode("/", $_SERVER['REQUEST_URI']);
+                    $host_url = "$host//$pieces[1]/$pieces[2]/";
+                    $img['path'] = $host_url . substr($img['path'], 3);
+                }
+                array_push($brand_imgs, $img);
             }
             $this->smarty->assign('brand_imgs', $brand_imgs);
         }
