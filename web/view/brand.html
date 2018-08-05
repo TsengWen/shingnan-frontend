@@ -13,13 +13,13 @@
         <img class="img-fluid p-5" src="http://placehold.it/1920x720" alt="Big img">
         <!-- brand logo -->
         <div class="row p-5">
-            \{for $i=1 to 24\}
+            \{foreach from=$brands item=$brand \}
             <div class="col-md-3 col-sm-6 col-xm-12 py-2">
-                <a href="brandController.php?action=viewDetail">
-                    <img class="img-fluid w-100" src="http://placehold.it/240x80">
+                <a href="brandController.php?action=viewDetail&brandId=\{$brand['brandId']\}">
+                    <img class="img-fluid w-100" src="\{if isset($brand['path'])\}\{$brand['path']\}\{else\}http://placehold.it/240x80\{/if\}">
                 </a>
             </div>
-            \{/for\}
+            \{/foreach\}
         </div>
         <!-- glasses of brand -->
         <div class="brand-glasses w-100 p-4">

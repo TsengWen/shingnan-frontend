@@ -36,11 +36,32 @@ class Brand
      * 顯示首頁
      */
     public function view() {
-        $sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
-        $store_list = $this->getSQLResult($sql);
+        $sql1 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $sql2 = "SELECT `brand`.`brandId`, `image`.`path` 
+                 FROM `brand` LEFT JOIN `image` 
+                 ON `brand`.`brandId` = `image`.`itemId` 
+                 WHERE `brand`.`isDelete` = 0";
+        $store_list = $this->getSQLResult($sql1);
+        $brand_imgs = $this->getSQLResult($sql2);
 
+        // footer info
         if (!is_null($store_list)) {
             $this->smarty->assign('stores', $store_list); 
+        }
+        // brand images
+        if (!is_null($brand_imgs)) {
+            $images = array();
+            $host = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+            $pieces = explode("/", $_SERVER['REQUEST_URI']);
+            $host_url = "$host//$pieces[1]/$pieces[2]/";
+            
+            foreach ($brand_imgs as $img) {
+                if (!is_null($img['path'])) {
+                    $img['path'] = $host_url . substr($img['path'], 3);
+                }
+                array_push($images, $img);
+            }
+            $this->smarty->assign('brands', $images); 
         }
 
         $this->smarty->assign('title', '品牌介紹');

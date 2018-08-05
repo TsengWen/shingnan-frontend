@@ -51,15 +51,17 @@ class Index
             $host_url = "$host//$pieces[1]/$pieces[2]/";
 
             foreach ($img_list as $img) {
-                // 注意這個要改，目前是寫暫定的網址
-                // 'http://140.116.82.48/shingnan/web/'
-                $images[$img['imageName']] = $host_url . substr($img['path'], 3);
+                if (!is_null($img['path'])) {
+                    $images[$img['imageName']] = $host_url . substr($img['path'], 3);
+                } else {
+                    $images[$img['imageName']] = null;
+                }
                 $text[$img['imageName']] = $img['link'];
             }
             $this->smarty->assign('images', $images);
             $this->smarty->assign('text', $text);      
         }
-
+        // footer info
         if (!is_null($store_list)) {
             $this->smarty->assign('stores', $store_list); 
         }
