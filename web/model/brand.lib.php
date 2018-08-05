@@ -40,7 +40,9 @@ class Brand
         $sql2 = "SELECT `brand`.`brandId`, `image`.`path` 
                  FROM `brand` LEFT JOIN `image` 
                  ON `brand`.`brandId` = `image`.`itemId` 
-                 WHERE `brand`.`isDelete` = 0";
+                 WHERE `brand`.`isDelete` = 0
+                 ORDER BY `brand`.`lastUpdateTime`
+                 DESC LIMIT 0, 24";
         $store_list = $this->getSQLResult($sql1);
         $brand_imgs = $this->getSQLResult($sql2);
 

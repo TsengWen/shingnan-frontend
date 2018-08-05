@@ -42,7 +42,7 @@ class Buy
                  FROM `brand` LEFT JOIN `image` 
                  ON `brand`.`brandId` = `image`.`itemId` 
                  WHERE `brand`.`isDelete` = 0
-                 ORDER BY `lastUpdateTime`
+                 ORDER BY `brand`.`lastUpdateTime`
                  DESC LIMIT 0, 8";
         $sql2 = "SELECT * FROM `style` WHERE `isDelete` = 0";
         $sql3 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
@@ -68,7 +68,7 @@ class Buy
         if (!is_null($style_list)) {
             $this->smarty->assign('styles', $style_list);
         }
-
+        // footer info
         if (!is_null($store_list)) {
             $this->smarty->assign('stores', $store_list); 
         }
@@ -84,7 +84,7 @@ class Buy
     {
         $sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
         $store_list = $this->getSQLResult($sql);
-
+        // footer info
         if (!is_null($store_list)) {
             $this->smarty->assign('stores', $store_list); 
         }
