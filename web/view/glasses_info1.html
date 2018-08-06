@@ -1,0 +1,36 @@
+<div class="col-lg-6 col-md-6 col-sm-6 col-xm-12 float-left">
+    <img class="img-fluid w-100" src="http://placehold.it/160x80">
+    <div class="d-flex justify-content-start m-3 glasses-bill">
+        <img class="img-thumbnail" src="http://placehold.it/40x40">
+        <img class="img-thumbnail" src="http://placehold.it/40x40">
+        <img class="img-thumbnail" src="http://placehold.it/40x40">
+        <img class="img-thumbnail" src="http://placehold.it/40x40">
+        <img class="img-thumbnail" src="http://placehold.it/40x40">
+    </div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xm-12 text-right  float-right">
+    <h3 class="text-center glass-id">\{$frames[$k-2]['no']\}</h3>
+    <div class="form-group text-left glass-price">
+        <label for="g_size">金額:</label>
+        <span>\{$frames[$k-2]['price']\}</span>
+    </div>
+    <div class="form-group text-left glass-size">
+        <label for="g_size">尺寸:</label>
+        <span>\{$frames[$k-2]['shape']\}</span>
+    </div>
+    <div class="form-group text-left glass-color">
+        <label for="color_down">顏色:</label>
+        <div class="dropdown" id="color_down">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                請選擇顏色
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="javascript:">\{$frames[$k-2]['color']\}</a>
+                <a class="dropdown-item" href="javascript:">\{$frames[$k-2]['color']\}</a>
+                <a class="dropdown-item" href="javascript:">\{$frames[$k-2]['color']\}</a>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-warning btn-add-cart">加入購物車</button>
+</div>

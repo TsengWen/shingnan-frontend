@@ -19,42 +19,53 @@
                 </button>
                 <div class="collapse" id="collapseBrand">
                     <div class="list-group">
-                        \{foreach from=$styles item=style\}
-                        <a href="buyController.php?action=viewDetail&style=\{$style['styleName']\}" class="list-group-item list-group-item-action">\{$style['styleName']\}</a>
+                        \{foreach from=$brands item=brand\}
+                        <a href="buyController.php?action=viewDetail&brandId=\{$brand['brandId']\}" class="list-group-item list-group-item-action">\{$brand['brandName']\}</a>
                         \{/foreach\}
                     </div>
                 </div>
                 \{foreach from=$styles item=style\}
                 <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample2"
-                    aria-expanded="false" aria-controls="collapseExample2" onclick="btn_style('\{$style['styleName']\}')">
+                    aria-expanded="false" aria-controls="collapseExample2" onclick="btn_style('\{$style['styleId']\}')">
                     \{$style['styleName']\}
                 </button>
                 \{/foreach\}
             </div>
             <div class="col-9">
-                <div class="text-center brand-glasses p-3">品牌名稱</div>
-                <div id="g-parent" class="row p-3 d-flex justify-content-center">
-                    \{for $i=1 to 9\}
+                <div class="text-center brand-glasses p-3">\{$tname\}</div>
+                <div id="g-parent" class="row p-3 d-flex justify-content-left">
+                    \{foreach from=$frames key=k item=frame\}
                     <div class="w-100 col-md-4 col-sm-6 col-xm-12 p-0 text-center glasses-cell">
                         <!-- glasses image -->
                         <img class="img-fluid" src="http://placehold.it/270x145">
                         <!-- glasses text -->
                         <p style="height: 167px;">
                             <!-- <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></button> -->
-                            <a data-toggle="collapse" href="#collapse\{$i\}">眼鏡文字描述</a>
+                            <a data-toggle="collapse" href="#collapse\{$k\}">\{$frame['frameName']\}</a>
                         </p>
                     </div>
-                    \{if $i % 3 == 0\}
-                    <div id="collapse\{$i-2\}" class="row w-100 collapse p-3 hr-1">
-                        \{include file="glasses_info.html"\}
+                    \{if $k % 3 == 2\}
+                    <div id="collapse\{$k-2\}" class="row w-100 collapse p-3 hr-1">
+                        \{include file="glasses_info1.html"\}
                     </div>
-                    <div id="collapse\{$i-1\}" class="row w-100 collapse p-3 hr-1">
-                        \{include file="glasses_info.html"\}
+                    <div id="collapse\{$k-1\}" class="row w-100 collapse p-3 hr-1">
+                        \{include file="glasses_info2.html"\}
                     </div>
-                    <div id="collapse\{$i\}" class="row w-100 collapse p-3 hr-1">
-                        \{include file="glasses_info.html"\}
+                    <div id="collapse\{$k\}" class="row w-100 collapse p-3 hr-1">
+                        \{include file="glasses_info3.html"\}
                     </div>
-                    \{/if\} \{/for\}
+                    \{elseif $k >= $check and $k == $fcount\} \{if $repeat == 2\}
+                    <div id="collapse\{$k-1\}" class="row w-100 collapse p-3 hr-1">
+                        \{include file="glasses_info2.html"\}
+                    </div>
+                    <div id="collapse\{$k\}" class="row w-100 collapse p-3 hr-1">
+                        \{include file="glasses_info3.html"\}
+                    </div>
+                    \{elseif $repeat == 1\}
+                    <div id="collapse\{$k\}" class="row w-100 collapse p-3 hr-1">
+                        \{include file="glasses_info3.html"\}
+                    </div>
+                    \{/if\} \{/if\} \{/foreach\}
                 </div>
 
             </div>
@@ -70,8 +81,8 @@
             $myGroup.find('.collapse.show').collapse('hide');
         });
 
-        function btn_style(styleName) {
-            document.location.href = "buyController.php?action=viewDetail&style=" + styleName;
+        function btn_style(styleId) {
+            document.location.href = "buyController.php?action=viewDetail&styleId=" + styleId;
         }
     </script>
 </body>
