@@ -105,10 +105,17 @@ class Buy
     /**
      * 顯示眼鏡詳細資料
      */
-    public function viewDetail()
+    public function viewDetail($inputs)
     {
-        $sql = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
-        $store_list = $this->getSQLResult($sql);
+        $style = $inputs['style'];
+        $sql1 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
+        $sql2 = "SELECT * FROM `style` WHERE `isDelete` = 0";
+        $store_list = $this->getSQLResult($sql1);
+        $style_list = $this->getSQLResult($sql2);
+
+        if (!is_null($style_list)) {
+            $this->smarty->assign('styles', $style_list);
+        }
         // footer info
         if (!is_null($store_list)) {
             $this->smarty->assign('stores', $store_list); 

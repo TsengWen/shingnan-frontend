@@ -19,29 +19,17 @@
                 </button>
                 <div class="collapse" id="collapseBrand">
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">型男風格</a>
-                        <a href="#" class="list-group-item list-group-item-action">金士曼風格</a>
-                        <a href="#" class="list-group-item list-group-item-action">少女風格</a>
-                        <a href="#" class="list-group-item list-group-item-action disabled">古典風格</a>
-                        <a href="#" class="list-group-item list-group-item-action disabled">文青風格</a>
+                        \{foreach from=$styles item=style\}
+                        <a href="buyController.php?action=viewDetail&style=\{$style['styleName']\}" class="list-group-item list-group-item-action">\{$style['styleName']\}</a>
+                        \{/foreach\}
                     </div>
                 </div>
+                \{foreach from=$styles item=style\}
                 <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample2"
-                    aria-expanded="false" aria-controls="collapseExample2">
-                    型男風格
+                    aria-expanded="false" aria-controls="collapseExample2" onclick="btn_style('\{$style['styleName']\}')">
+                    \{$style['styleName']\}
                 </button>
-                <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample3"
-                    aria-expanded="false" aria-controls="collapseExample3">
-                    金士曼風格
-                </button>
-                <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample4"
-                    aria-expanded="false" aria-controls="collapseExample4">
-                    少女風格
-                </button>
-                <button class="btn btn-secondary border-dark w-75 my-3" type="button" data-toggle="collapse" data-target="#collapseExample5"
-                    aria-expanded="false" aria-controls="collapseExample5">
-                    古典風格
-                </button>
+                \{/foreach\}
             </div>
             <div class="col-9">
                 <div class="text-center brand-glasses p-3">品牌名稱</div>
@@ -81,6 +69,10 @@
         $myGroup.on('show.bs.collapse', '.collapse', function () {
             $myGroup.find('.collapse.show').collapse('hide');
         });
+
+        function btn_style(styleName) {
+            document.location.href = "buyController.php?action=viewDetail&style=" + styleName;
+        }
     </script>
 </body>
 
