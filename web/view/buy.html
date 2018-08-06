@@ -24,19 +24,17 @@
                 <!-- <button type="button" class="btn btn-secondary border-dark">more</button> -->
             </div>
         </div>
-        \{foreach from=$styles item=style\}
-        <div class="glasses-class-bar">\{$style.styleName\}</div>
+        \{foreach from=$styles item=style key=k\}
+        <div class="glasses-class-bar">\{$k\}</div>
         <div class="row mx-auto my-5" style="width: 70%;">
-            \{foreach from=$frame item=img name=frameImg\}
+            \{foreach from=$style item=img name=frameImg\}
             <div class="col-md-3 col-sm-6 col-xm-12 p-1">
-                <!-- <img class="rounded" src="\{if isset($img)\}\{$img\}\{else\}../img/01.jpg\{/if\}" onError="this.src = '../img/01.jpg'" style="width: 100%;"> -->
-                <img class="rounded" src="http://placehold.it/300x300" style="width: 100%;">
+                <img class="rounded" src="\{if isset($img['path'])\}\{$img['path']\}\{else\}http://placehold.it/400x400\{/if\}" style="width: 100%;">
             </div>
-            \{if $img@index eq 7\} \{break\} \{/if\} \{/foreach\} \{if count($frame) > 8\}
+            \{/foreach\}
             <div class="col text-right p-1">
-                <button type="button" class="btn btn-secondary border-dark">more</button>
+                <a class="btn btn-secondary border-dark" href="buyController.php?action=viewDetail&style=\{$k\}">more</a>
             </div>
-            \{/if\}
         </div>
         \{/foreach\}
         <!-- got top button -->

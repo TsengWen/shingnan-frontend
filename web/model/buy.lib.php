@@ -66,7 +66,32 @@ class Buy
         }
 
         if (!is_null($style_list)) {
-            $this->smarty->assign('styles', $style_list);
+            $frames = array();
+            $host = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+            $pieces = explode("/", $_SERVER['REQUEST_URI']);
+            $host_url = "$host//$pieces[1]/$pieces[2]/";
+            foreach($style_list as $style) {
+                $sytleId = $style['styleId'];
+                $sql = "SELECT f.`frameId`, i.`path` 
+                        FROM `frameStyle` as f LEFT JOIN `image` as i
+                        ON f.`frameId` = i.`itemId`
+                        WHERE f.`styleId` = '$sytleId'
+                        ORDER BY f.`createTime`
+                        DESC LIMIT 0, 8";
+
+                $frame_imgs = $this->getSQLResult($sql);
+                $temp_list = array();
+                if (!is_null($frame_imgs)) {
+                    foreach($frame_imgs as $img) {
+                        if (!is_null($img['path'])) {
+                            $img['path'] = $host_url . substr($img['path'], 3);
+                        }
+                        array_push($temp_list, $img);
+                    }
+                }
+                $frames[$style['styleName']] = $temp_list;
+            }
+            $this->smarty->assign('styles', $frames);
         }
         // footer info
         if (!is_null($store_list)) {
