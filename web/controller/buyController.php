@@ -18,6 +18,9 @@ switch ($method) {
                     $buy->view();
                 }
                 break;
+            case 'clickRate':
+                $buy->clickRate($_POST);
+                break;
         }
         break;
     case 'GET':

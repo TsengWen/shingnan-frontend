@@ -1,6 +1,7 @@
 <?php
 // initialize
 require_once HOME_DIR . 'configs/config.php';
+require_once 'IdGenerator.php';
 
 /**
  * 眼鏡選購
@@ -142,8 +143,6 @@ class Buy
                      ORDER BY `frame`.`createTime` DESC";
             $sql5 = "SELECT `brandName` FROM `brand` WHERE `brandId` = '$brandId'";
         }
-        
-        echo $sql5;
 
         $store_list = $this->getSQLResult($sql1);
         $style_list = $this->getSQLResult($sql2);
@@ -158,7 +157,17 @@ class Buy
         $this->smarty->assign('tname', $title_name);
         
         if (!is_null($frames)) {
-            $this->smarty->assign('frames', $frames);
+            $frame_list = array();
+            $host = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+            $pieces = explode("/", $_SERVER['REQUEST_URI']);
+            $host_url = "$host//$pieces[1]/$pieces[2]/";
+
+            foreach($frames as $frame) {
+                $frame['path'] = $host_url . substr($frame['path'], 3);
+                array_push($frame_list, $frame);
+            }
+
+            $this->smarty->assign('frames', $frame_list);
             $count = count($frames);
             $count2 -= $count%3;
             $this->smarty->assign('check', $count2);
@@ -180,6 +189,31 @@ class Buy
 
         $this->smarty->assign('title', '眼鏡選購');
         $this->smarty->display('buy_detail.html');
+    }
+    /**
+     * 增加點擊率
+     */
+    public function clickRate($inputs)
+    {
+        $frameId = $inputs['frameId'];
+        if (!isset($_SESSION[$frameId])) {
+            $_SESSION[$frameId] = true;
+            $idGen = new IdGenerator();
+            $ctrId = $idGen->GetID('ctr');
+            $now = date('Y-m-d H:i:s');
+            $sql = "INSERT INTO `frameClick` (`Id`, `itemId`, `createTime`)
+                    VALUES (:ctrId, :frameId, :createTime)";
+            $res = $this->db->prepare($sql);
+            $res->bindParam(':ctrId', $ctrId, PDO::PARAM_STR);
+            $res->bindParam(':frameId', $frameId, PDO::PARAM_STR);
+            $res->bindParam(':createTime', $now, PDO::PARAM_STR);
+            if ($res->execute()) {
+                $this->setResultMsg();
+            }
+            echo 'success';
+        } else {
+            echo 'recorded';
+        }
     }
 
     /**
