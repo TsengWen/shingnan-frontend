@@ -71,7 +71,7 @@ class News
 
             $host = 'http://' . $_SERVER['SERVER_NAME'];
             $pieces = explode("/", $_SERVER['REQUEST_URI']);
-            $host_url = "$host/c.42j0/shingnan/$pieces[2]/";
+            $host_url = "$host/c.42j0/shingnan/$pieces[1]/";
 
             $imagePath = array();
             foreach ($allnewsData as $img) {

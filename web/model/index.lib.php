@@ -48,7 +48,7 @@ class Index
             $text = array();
             $host = 'http://' . $_SERVER['SERVER_NAME'];
             $pieces = explode("/", $_SERVER['REQUEST_URI']);
-            $host_url = "$host/c.42j0/$pieces[2]/";
+            $host_url = "$host/c.42j0/$pieces[1]/";
 
             foreach ($img_list as $img) {
                 if (!is_null($img['path'])) {
