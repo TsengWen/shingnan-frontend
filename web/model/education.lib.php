@@ -71,7 +71,7 @@ class Education
 
             $host = 'http://' . $_SERVER['SERVER_NAME'];
             $pieces = explode("/", $_SERVER['REQUEST_URI']);
-            $host_url = "$host/shingnan/$pieces[2]/";
+            $host_url = "$host/c.42j0/$pieces[2]/";
 
             $imagePath = array();
             foreach ($alleducationData as $img) {
