@@ -57,7 +57,7 @@ class About
         //get data to show
         $start_from = ($this->page - 1) * 5;
 
-        $sql1 = "SELECT `article`.`title`, `article`.`preview` , `article`.`articleId` , `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`imageId`,`image`.`path`
+        $sql1 = "SELECT `article`.*,`image`.`imageId`,`image`.`path`
                 FROM  `article`
                 LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
                 WHERE `article`.`type` = 3
@@ -68,7 +68,20 @@ class About
         $store_list = $this->getSQLResult($sql2);
 
         if (!is_null($allaboutData)) {
-            $this->smarty->assign('allaboutData', $allaboutData);
+
+            $host = 'http://' . $_SERVER['SERVER_NAME'];
+            $pieces = explode("/", $_SERVER['REQUEST_URI']);
+            $host_url = "$host/$pieces[2]/";
+
+            $imagePath = array();
+            foreach ($allaboutData as $img) {
+                if (!is_null($img['path'])) {
+                    $img['path'] = $host_url . substr($img['path'], 3);
+                }
+                array_push($imagePath, $img);
+            }
+
+            $this->smarty->assign('allaboutData', $imagePath);
         }
         if (!is_null($store_list)) {
             $this->smarty->assign('stores', $store_list);

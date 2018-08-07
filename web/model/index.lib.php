@@ -40,15 +40,15 @@ class Index
     {
         $sql1 = "SELECT * FROM `image` WHERE `itemId` like 'index_%'";
         $sql2 = "SELECT `storeName`, `phoneNumber`, `address` FROM `store`";
-        $img_list = $this->getSQLResult($sql1);   
+        $img_list = $this->getSQLResult($sql1);
         $store_list = $this->getSQLResult($sql2);
 
         if (!is_null($img_list)) {
             $images = array();
             $text = array();
-            $host = 'http://' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+            $host = 'http://' . $_SERVER['SERVER_NAME'];
             $pieces = explode("/", $_SERVER['REQUEST_URI']);
-            $host_url = "$host//$pieces[1]/$pieces[2]/";
+            $host_url = "$host/shingnan/$pieces[2]/";
 
             foreach ($img_list as $img) {
                 if (!is_null($img['path'])) {
@@ -59,11 +59,11 @@ class Index
                 $text[$img['imageName']] = $img['link'];
             }
             $this->smarty->assign('images', $images);
-            $this->smarty->assign('text', $text);      
+            $this->smarty->assign('text', $text);
         }
         // footer info
         if (!is_null($store_list)) {
-            $this->smarty->assign('stores', $store_list); 
+            $this->smarty->assign('stores', $store_list);
         }
 
         $this->smarty->assign('title', '興南眼鏡行');
@@ -77,7 +77,7 @@ class Index
     {
         // check $sql if is empty string
         if (empty($sql)) {
-            return NULL;
+            return null;
         } else {
             $res = $this->db->prepare($sql);
 
@@ -90,7 +90,7 @@ class Index
                 $error = $res->errorInfo();
                 $this->setResultMsg('failure', $error[0]);
 
-                return NULL;
+                return null;
             }
         }
     }

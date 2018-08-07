@@ -57,7 +57,7 @@ class Education
         //get data to show
         $start_from = ($this->page - 1) * 5;
 
-        $sql1 = "SELECT `article`.`title`, `article`.`preview` , `article`.`articleId` , `article`.`type`,`article`.`ctr` , `article`.`lastUpdateTime`, `article`.`createTime`,`image`.`imageId`,`image`.`path`
+        $sql1 = "SELECT `article`.*,`image`.`imageId`,`image`.`path`
                 FROM  `article`
                 LEFT JOIN  `image` ON `article`.`articleId` = `image`.`itemId`
                 WHERE `article`.`type` = 1
@@ -68,7 +68,19 @@ class Education
         $store_list = $this->getSQLResult($sql2);
 
         if (!is_null($alleducationData)) {
-            $this->smarty->assign('alleducationData', $alleducationData);
+
+            $host = 'http://' . $_SERVER['SERVER_NAME'];
+            $pieces = explode("/", $_SERVER['REQUEST_URI']);
+            $host_url = "$host/shingnan/$pieces[2]/";
+
+            $imagePath = array();
+            foreach ($alleducationData as $img) {
+                if (!is_null($img['path'])) {
+                    $img['path'] = $host_url . substr($img['path'], 3);
+                }
+                array_push($imagePath, $img);
+            }
+            $this->smarty->assign('alleducationData', $imagePath);
         }
         if (!is_null($store_list)) {
             $this->smarty->assign('stores', $store_list);

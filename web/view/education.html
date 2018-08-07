@@ -13,6 +13,7 @@
         <!-- main-content -->
         <div class="container">
             <div id="page">
+                \{$alleducationData\}
                 \{foreach from=$alleducationData item=article\}
                 <div class="post">
                     <div>
@@ -22,7 +23,7 @@
                     </div>
                     <a href="educationController.php?action=viewContent&id=\{$article.articleId\}" id=featured-thumbnail>
                         <div class="featured-thumbnail">
-                            <img width="250" height="200" src="../../../shingnan/web/media/\{$article.path\}" alt="Img">
+                            <img width="250" height="200" src="\{$article.path\}" alt="Img">
                         </div>
                     </a>
                     <div class="post-content">\{$article.preview\}</div>
